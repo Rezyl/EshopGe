@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/views/taglib_imports.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -11,9 +12,26 @@
     <body>
          <script src="http://code.jquery.com/jquery.js"></script>
         <script src="/resources/js/bootstrap.min.js"></script>
-        <h1>Hello World!</h1>
-        <p>This is the homepage!</p>
+        <h1>Košík</h1>
 
+         <table>
+             <thead>
+             <tr>
+                 <th>Jmeno</th>
+                 <th>Pocet kusu</th>
+             </tr>
+             </thead>
+             <tbody>
+             <c:forEach var="item" items="${OrderObj.shoppingItems}">
+                 <tr>
+                     <td><c:out value="${item.name}"></c:out></td>
+                     <td><c:out value="${item.quantity}"></c:out></td>
+                 </tr>
+                 
+             </c:forEach>
+             </tbody>
+         </table>
+         <a href="continueToUserData">Pokracuj</a>
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label for="email1" class="col-sm-2 control-label">Email</label>

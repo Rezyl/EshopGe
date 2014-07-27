@@ -10,7 +10,7 @@
     </head>
     <body>
     <ul>
-        <li><a href="items">Polozky</a></li>
+        <li><a href="itemsForm">Polozky</a></li>
         <li><a href="orderForm">Kosik</a></li>
     </ul>
     </body>

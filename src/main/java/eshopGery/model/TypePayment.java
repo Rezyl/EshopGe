@@ -1,4 +1,4 @@
-package EshopGery.model;
+package eshopGery.model;
 
 /**
  * Created with IntelliJ IDEA.

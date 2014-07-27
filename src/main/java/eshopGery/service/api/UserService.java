@@ -1,4 +1,4 @@
-package EshopGery.service.api;
+package eshopGery.service.api;
 
 /**
  * Created with IntelliJ IDEA.

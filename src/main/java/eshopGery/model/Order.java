@@ -1,8 +1,9 @@
-package EshopGery.model;
+package eshopGery.model;
 
 import org.joda.time.DateTime;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
 public class Order {
 
     private User user;
-    private List<ShoppingItem> shoppingItems;
+    private List<ShoppingItem> shoppingItems = new ArrayList<ShoppingItem>();
     private TypePayment typeOfPayment;
     private BigDecimal totalPrice;
     private DateTime dateCreate;

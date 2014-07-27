@@ -1,7 +1,7 @@
-package EshopGery.service.impl;
+package eshopGery.service.impl;
 
-import EshopGery.model.Order;
-import EshopGery.service.api.OrderService;
+import eshopGery.model.Order;
+import eshopGery.service.api.OrderService;
 
 /**
  * Created with IntelliJ IDEA.
