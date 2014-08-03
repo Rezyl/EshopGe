@@ -1,7 +1,8 @@
 package eshopGery.dao;
 
 import eshopGery.model.ShoppingItem;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,7 +11,8 @@ import java.util.List;
  * User: lukas
  * Date: 26.7.14
  */
-@Component
+@Repository
+@Transactional
 public class ShoppingItemDao extends AbstractDao<ShoppingItem> {
     @Override
     public Class<ShoppingItem> getClazz() {

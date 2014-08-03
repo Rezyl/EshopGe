@@ -6,12 +6,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <title>Home</title>
     </head>
     <body>
          <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="/resources/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
         <h1>Polozky</h1>
             <div class="form-group">
                 <label for="quantity" class="col-sm-2 control-label">Polozka 1</label>

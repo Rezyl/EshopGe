@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class BasicFrameController {
+public class BasicNavigateController {
 
 	@RequestMapping(value="/")
 	public ModelAndView test() {
@@ -30,5 +30,13 @@ public class BasicFrameController {
     @RequestMapping(value="/obchodleva")
     public ModelAndView getObchodLeva() {
         return new ModelAndView("obchodleva");
+    }
+    @RequestMapping(value="/kosik")
+    public ModelAndView getKosik() {
+        return new ModelAndView("kosik");
+    }
+    @RequestMapping(value="/adminPart")
+    public ModelAndView getAdminPart() {
+        return new ModelAndView("/admin/adminPart");
     }
 }

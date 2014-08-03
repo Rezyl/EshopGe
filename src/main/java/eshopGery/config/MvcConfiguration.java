@@ -5,21 +5,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import java.util.Properties;
-
 @Configuration
 @ComponentScan(basePackages= "eshopGery")
 @EnableWebMvc
 @PropertySource("classpath:config.properties")
+@EnableTransactionManagement
 public class MvcConfiguration extends WebMvcConfigurerAdapter{
 
     //TODO properties file
@@ -56,10 +57,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         LocalSessionFactoryBean session = new LocalSessionFactoryBean();
         session.setPackagesToScan("eshopGery");
         session.setDataSource(dataSource());
-        Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
-        session.setHibernateProperties(hibernateProperties);
+        session.setAnnotatedPackages(new String[]{"eshopGery.model"});
+        session.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
         return session;
     }
 
@@ -67,7 +66,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	public DriverManagerDataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/snoex_db?characterEncoding=UTF-8");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/eshopg?characterEncoding=UTF-8");
 		dataSource.setUsername("root");
 		dataSource.setPassword("password");
 		return dataSource;
