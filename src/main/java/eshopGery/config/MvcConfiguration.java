@@ -10,6 +10,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -57,7 +58,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         LocalSessionFactoryBean session = new LocalSessionFactoryBean();
         session.setPackagesToScan("eshopGery");
         session.setDataSource(dataSource());
-        session.setAnnotatedPackages(new String[]{"eshopGery.model"});
+		session.setAnnotatedPackages(new String[] { "eshopGery" });
         session.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
         return session;
     }
@@ -84,43 +85,10 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
-    public String getDriverClass() {
-        return driverClass;
-    }
-
-    public void setDriverClass(String driverClass) {
-        this.driverClass = driverClass;
-    }
-
-    public String getJdbcUrl() {
-        return jdbcUrl;
-    }
-
-    public void setJdbcUrl(String jdbcUrl) {
-        this.jdbcUrl = jdbcUrl;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getHibProp1() {
-        return hibProp1;
-    }
-
-    public void setHibProp1(String hibProp1) {
-        this.hibProp1 = hibProp1;
-    }
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		resolver.setMaxUploadSize(100000);
+		return resolver;
+ }
 }

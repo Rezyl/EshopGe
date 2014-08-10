@@ -4,11 +4,14 @@
 <body bgcolor="#F9F9F6">
 
 <p align="center">
-<img border="0" src="/resources/img/logovlevo.png"><img border="0" src="/resources/img/logovpravo.png" width="570" height="143"></p>
+    <a href="adminPartShoppingItems"><img border="0" src="/resources/img/logovlevo.png"></a>
+    <img border="0" src="/resources/img/logovpravo.png" width="570" height="143"></p>
+
 <p align="center"><img border="0" src="/resources/img/oddelovac.bmp" width="980" height="4"></p>
 
 <p align="center">
-<a target="_top" href="adminPart"><img border="0" src="/resources/img/obchod.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_top" href="showByCategory?category=LONG_SOCKS"><img border="0" src="/resources/img/obchod.png"
+                                                                    width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 
 <a target="_top" href="top"><img border="0" src="/resources/img/top.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -16,7 +19,7 @@
 
 <a target="_top" href="kontakt"><img border="0" src="/resources/img/kontakt.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 
-<a target="_top" href="kosik"><img border="0" src="/resources/img/kosik.png" width="144" height="31"></a>
+    <a target="_top" href="orderForm"><img border="0" src="/resources/img/kosik.png" width="144" height="31"></a>
 
 </p>
 

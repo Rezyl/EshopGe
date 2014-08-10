@@ -1,7 +1,8 @@
 package eshopGery.model;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
+
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,7 +20,7 @@ public class ShoppingItem {
     @Column
     private String name;
 
-    @Deprecated
+	@Transient
     private String size;
 
     @Column
@@ -31,7 +32,10 @@ public class ShoppingItem {
     @Column
     private Integer quantity;
 
-    public Long getItemId() {
+	@Column
+	private String imageFilePath;
+
+ public Long getItemId() {
         return itemId;
     }
 
@@ -78,7 +82,12 @@ public class ShoppingItem {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+	public String getImageFilePath() {
+		return imageFilePath;
+	}
+
+	public void setImageFilePath(String imageFilePath) {
+		this.imageFilePath = imageFilePath;
+	}
 }
-
-
-

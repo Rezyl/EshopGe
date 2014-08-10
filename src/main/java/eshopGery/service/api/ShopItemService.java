@@ -1,8 +1,11 @@
 package eshopGery.service.api;
 
-import eshopGery.model.ShoppingItem;
-
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import eshopGery.model.Category;
+import eshopGery.model.ShoppingItem;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,29 +14,26 @@ import java.util.List;
  */
 public interface ShopItemService {
 
-    public void createItem(ShoppingItem shoppingItem);
+	public void createItem(ShoppingItem shoppingItem);
 
-    public void updateItem(ShoppingItem shoppingItem);
+	public void updateItem(ShoppingItem shoppingItem);
 
-    public void deleteItem(ShoppingItem shoppingItem);
+	public void deleteItem(ShoppingItem shoppingItem);
 
-    public List<ShoppingItem> getAllItems();
+	public List<ShoppingItem> getAllItems();
 
-    public ShoppingItem findItemById(Long id);
+	public List<ShoppingItem> getAllByCategory(Category category);
 
-    public void addItemToOrder();
+	public ShoppingItem findItemById(Long id);
 
-    public void deleteItemFromOrder();
+	public String uploadImage(String pathToDirectory, MultipartFile file);
 
-    public List<ShoppingItem> getAllItemsByUserId(String UserId);
+	public boolean deleteImage(String fullPath);
 
+	public void addItemToOrder();
 
+	public void deleteItemFromOrder();
 
-
-
-
-
-
-
+	public List<ShoppingItem> getAllItemsByUserId(String UserId);
 
 }

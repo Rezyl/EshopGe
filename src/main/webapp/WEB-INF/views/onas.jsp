@@ -11,8 +11,9 @@
 <body style="background-color: #F9F9F6">
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
-<p align="center"><font color="#07A9C3" face="Times New Roman" style="font-size: 13pt"><b>„NEJVĚTŠÍ CHYBA, KTEROU V ŽIVOTĚ MŮŽETE UDĚLAT, JE MÍT POŘÁD STRACH, ŽE NĚJAKOU UDĚLÁTE"
-    </b></font></p>
+<p align="center"><font color="#07A9C3" face="Times New Roman" style="font-size: 13pt"><b>„NEJVĚTŠÍ CHYBA, KTEROU V
+    ŽIVOTĚ MŮŽETE UDĚLAT, JE MÍT POŘÁD STRACH, ŽE NĚJAKOU UDĚLÁTE"
+</b></font></p>
 
 <p align="center"><b><span lang="en-us"><font color="#07A9C3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- <span
@@ -20,10 +21,13 @@
 1856–1915 </span></b></p>
 
 <p align="center">
-    Dejte nevýrazným ponožkám sbohem, mnozí mladí lidé se již naučili oblékat se barevně, výstředně a experimentovat.<br>
+    Dejte nevýrazným ponožkám sbohem, mnozí mladí lidé se již naučili oblékat se barevně, výstředně a
+    experimentovat.<br>
     To se ale vždy týkalo pouze hlavních částí outfitu, na ponožky se vždy tak nějak pozapomínalo. Až doposud.<br>
     Dosud nevídané, nápadité a svébytné vzory ponožek. Tak pestré ponožky jste na sobě ještě neměli!<br>
-    Jedná se o ponožky pro každou příležitost, pro každé rozpoložení. Ať už jste veselí, smutní, naštvaní či v melancholické náladě, naše ponožky vás potěší.</p>
+    Jedná se o ponožky pro každou příležitost, pro každé rozpoložení. Ať už jste veselí, smutní, naštvaní či v
+    melancholické náladě, naše ponožky vás potěší.</p>
+
 <p align="left">&nbsp;</p>
 
 <p align="center">

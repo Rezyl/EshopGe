@@ -7,22 +7,16 @@ package eshopGery.model;
  */
 public enum Category {
 
-    LONG_SOCKS("Dlouhé ponožky"),
-    SHORT_SOCKS("Krátké ponožky"),
-    WEED_SOCKS("Week ponožky"),
-    STRIPES_SOCKS("Pruhované ponožky"),
-    CUBE_SOCKS("Kostičkované"),
-    MEGALOMAN("Megalomanské"),
-    CREATIVE("Kreativní"),
-    RANDOM("Náhodné");
+	LONG_SOCKS("Dlouhé ponožky"), SHORT_SOCKS("Krátké ponožky"), WEED_SOCKS("Weed ponožky"), STRIPES_SOCKS("Pruhované ponožky"), CUBE_SOCKS("Kostičkované"), MEGALOMAN(
+			"Megalomanské"), CREATIVE("Kreativní"), RANDOM("Náhodné");
 
-    String displayName;
+	String displayName;
 
-    Category(String displayName) {
-        this.displayName = displayName;
-    }
+	Category(String displayName) {
+		this.displayName = displayName;
+	}
 
-    public String getDisplayName() {
-        return displayName;
-    }
+	public String getDisplayName() {
+		return displayName;
+	}
 }

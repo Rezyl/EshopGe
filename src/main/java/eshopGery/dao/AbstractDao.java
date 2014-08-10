@@ -1,13 +1,13 @@
 package eshopGery.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -45,7 +45,8 @@ public abstract class AbstractDao<T> {
 	}
 
 	public void update(T type) {
-		getCurrentSession().merge(type);
+		// getCurrentSession().merge(type);
+		getCurrentSession().update(type);
 	}
 
 	public void deleteByID(Long id) {

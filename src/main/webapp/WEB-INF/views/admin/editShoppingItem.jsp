@@ -5,8 +5,6 @@
   Time: 19:14
   To change this template use File | Settings | File Templates.
 --%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,13 +16,18 @@
 <strong>${message}</strong>
 
 <div class="panel">
-    <h2>Nové zboží</h2>
+    <h2>Editace zboží</h2>
 
     <div class="col_400 float_l">
-
-        <form:form method="POST" modelAttribute="shoppingItem" action="saveShoppingItem" enctype='multipart/form-data'>
+        <form:form method="POST" modelAttribute="updateShoppingItem" action="updateShoppingItem"
+                   enctype='multipart/form-data'>
+            <label for="image">Aktualni obrazek:</label>
+            <img id="image" src="${updateShoppingItem.imageFilePath}" align="left" alt="${updateShoppingItem.name}"
+                 width="214" height="233">
             <input type="file" name="file" id="file"/>
 
+            <label for="itemId">ID:</label>
+            <form:input path="itemId" readonly="true" id="itemId" cssClass="input_field"/>
             <label for="name">Jmeno:</label>
             <form:input path="name" id="name" cssClass="input_field"/>
             <form:errors path="name" cssClass="errorMessage"/>
@@ -45,8 +48,9 @@
             <%--<input type="button" value="Cancel" onclick="javascript:go('viewAllCompetitors.do');" class="submit_btn float_r"/>--%>
 
         </form:form>
-
     </div>
+
+
 </div>
 </body>
 </html>

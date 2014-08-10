@@ -7,19 +7,20 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <title>Home</title>
+    <title>Sklad</title>
 </head>
 <body>
 
 <div class="panel" id="socks">
-    <h2>Ponožky</h2>
+    <h2>Sklad</h2>
+    <strong>${message}</strong>
 
     <div class="col_all float_l">
         <div class="table_wrapper">
             <%--<sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">--%>
                 <%--<input type="button" value="Novy Zavodnik" onclick="javascript:go('saveCompetitor.do');" class="submit_btn float_l"/>--%>
             <%--</sec:authorize>--%>
-
+                <c:if test="${! empty SEARCH_ITEM_RESULTS_KEY}">
             <table>
                 <thead>
                 <tr>
@@ -32,27 +33,24 @@
                 </thead>
                 <tbody>
 
-                <c:if test="${! empty SEARCH_ITEM_RESULTS_KEY}">
-                    <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
+                <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
                         <tr>
-                            <td><c:out value="${item.name}"></c:out></td>
-                            <td><c:out value="${item.category}"></c:out></td>
-                            <td><c:out value="${item.price}"></c:out></td>
-                            <td><c:out value="${item.quantity}"></c:out></td>
+                            <td width="200"><c:out value="${item.name}"></c:out></td>
+                            <td width="200"><c:out value="${item.category}"></c:out></td>
+                            <td width="200"><c:out value="${item.price}"></c:out></td>
+                            <td width="200"><c:out value="${item.quantity}"></c:out></td>
                             <td>
-                                &nbsp;<a href="updateItem?itemId=${item.itemId}">Upravit</a>
+                                &nbsp;<a href="updateShoppingItemForm?itemId=${item.itemId}">Upravit</a>
                                 &nbsp;&nbsp;<a href="deleteItem?itemId=${item.itemId}">Smazat</a>
                             </td>
                         </tr>
                 </tbody>
                 </c:forEach>
+            </table>
                 </c:if>
                 <c:if test="${empty SEARCH_ITEM_RESULTS_KEY}">
-                    <tr>
-                        <td colspan="4">Nenalezeno</td>
-                    </tr>
+                    <span>Nenalezeno zboží.</span>
                 </c:if>
-            </table>
         </div>
     </div>
 </div>

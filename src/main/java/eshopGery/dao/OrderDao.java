@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import eshopGery.model.ShoppingItem;
+import eshopGery.model.Order;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,14 +14,14 @@ import eshopGery.model.ShoppingItem;
  */
 @Repository
 @Transactional
-public class ShoppingItemDao extends AbstractDao<ShoppingItem> {
+public class OrderDao extends AbstractDao<Order> {
 	@Override
-	public Class<ShoppingItem> getClazz() {
-		return ShoppingItem.class;
+	public Class<Order> getClazz() {
+		return Order.class;
 	}
 
 	@Override
-	public List<ShoppingItem> searchByName(String name) {
+	public List<Order> searchByName(String name) {
 		return null;
 	}
 }

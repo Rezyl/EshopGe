@@ -7,7 +7,15 @@ package eshopGery.model;
  */
 public enum TypePayment {
 
-    CASH, CREDIT_CARD;
+	CASH("Hotovost"), CREDIT_CARD("Převodem");
 
+	private String displayName;
 
+	TypePayment(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
 }
