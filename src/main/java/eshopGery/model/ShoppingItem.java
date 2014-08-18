@@ -1,7 +1,5 @@
 package eshopGery.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.*;
 
 /**
@@ -24,7 +22,7 @@ public class ShoppingItem {
     private String size;
 
     @Column
-    private BigDecimal price;
+    private Integer price;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -59,11 +57,11 @@ public class ShoppingItem {
         this.size = size;
     }
 
-    public BigDecimal getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -90,4 +88,33 @@ public class ShoppingItem {
 	public void setImageFilePath(String imageFilePath) {
 		this.imageFilePath = imageFilePath;
 	}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ShoppingItem that = (ShoppingItem) o;
+
+        if (category != that.category) return false;
+        if (imageFilePath != null ? !imageFilePath.equals(that.imageFilePath) : that.imageFilePath != null)
+            return false;
+        if (!itemId.equals(that.itemId)) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (price != null ? !price.equals(that.price) : that.price != null) return false;
+        if (size != null ? !size.equals(that.size) : that.size != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = itemId.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (size != null ? size.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (imageFilePath != null ? imageFilePath.hashCode() : 0);
+        return result;
+    }
 }

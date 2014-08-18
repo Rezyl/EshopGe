@@ -1,6 +1,7 @@
 package eshopGery.service.api;
 
 import java.util.List;
+import java.util.Map;
 
 import eshopGery.model.Order;
 import eshopGery.model.ShoppingItem;
@@ -16,7 +17,11 @@ public interface OrderService {
 
 	public void addItemToOrder(Order order, ShoppingItem item);
 
-	public String encodeShoppingItem(List<ShoppingItem> items);
+    public void removeItemFromOrder(Order order, Long itemID, String size);
+
+	public String encodeShoppingItem(Map<ShoppingItem, Integer> items);
+
+    public int calculateTotalPrice(Map<ShoppingItem, Integer> items);
 
 	public Order findItemById(Long id);
 

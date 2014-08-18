@@ -1,8 +1,7 @@
 package eshopGery.model;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.*;
 
@@ -19,15 +18,15 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long orderID;
 
-	@Transient
-    private List<ShoppingItem> shoppingItems = new ArrayList<ShoppingItem>();
+    @Transient
+    private Map<ShoppingItem, Integer> shoppingItems = new HashMap<ShoppingItem, Integer>();
     @Column
 	private String shoppingItemCodes;
 	@Column
 	@Enumerated(EnumType.STRING)
 	private TypePayment typeOfPayment;
     @Column
-	private BigDecimal totalPrice;
+	private Integer totalPrice;
     @Column
 	private String dateCreate;
 	@Column
@@ -60,11 +59,11 @@ public class Order {
 		this.orderID = orderID;
 	}
 
-	public List<ShoppingItem> getShoppingItems() {
-		return shoppingItems;
-	}
+    public Map<ShoppingItem, Integer> getShoppingItems() {
+        return shoppingItems;
+    }
 
-	public void setShoppingItems(List<ShoppingItem> shoppingItems) {
+    public void setShoppingItems(Map<ShoppingItem, Integer> shoppingItems) {
         this.shoppingItems = shoppingItems;
     }
 
@@ -76,11 +75,11 @@ public class Order {
         this.typeOfPayment = typeOfPayment;
     }
 
-    public BigDecimal getTotalPrice() {
+    public Integer getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(Integer totalPrice) {
         this.totalPrice = totalPrice;
     }
 

@@ -11,7 +11,7 @@
 <body bgcolor="#F9F9F6">
 <jsp:include page="menu.jsp"/>
 <div align="center">
-    <form:form modelAttribute="order" action="completeOrder">
+    <form:form modelAttribute="OrderObj" action="completeOrder">
 
         <label for="name">Jmeno:</label>
         <form:input path="name" id="name" cssClass="input_field"/>
