@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-    <title>Nov� str�nka 1</title>
+    <title>Nfejwdojweodjeodjeodfjiiiwiwiiiiiiiiiiiiiiiii</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
