@@ -7,7 +7,6 @@
 </head>
 
 <body bgcolor="#F9F9F6">
-ahoj, ja jsem zmena
 <jsp:include page="menu.jsp"/>
 </body>
 
