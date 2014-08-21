@@ -11,15 +11,15 @@
 
 <p align="center">
     <a target="_top" href="showByCategory?category=LONG_SOCKS"><img border="0" src="/resources/img/obchod.png"
-                                                                    width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<a target="_top" href="top"><img border="0" src="/resources/img/top.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a target="_top" href="top"><img border="0" src="/resources/img/top.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<a target="_top" href="onas"><img border="0" src="/resources/img/onas.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a target="_top" href="onas"><img border="0" src="/resources/img/onas.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<a target="_top" href="kontakt"><img border="0" src="/resources/img/kontakt.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a target="_top" href="kontakt"><img border="0" src="/resources/img/kontakt.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <a target="_top" href="orderForm"><img border="0" src="/resources/img/kosik.png" width="144" height="31"></a>
+    <a target="_top" href="orderForm"><img border="0" src="/resources/img/kosik.png" width="144" height="31"></a><img border="0" src="/resources/img/prazdny.png" width="34" height="30">
 
 </p>
 
