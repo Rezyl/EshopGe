@@ -1,6 +1,7 @@
 <html>
 
 <head>
+<body style="overflow: scroll">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
     <title>Nov� str�nka 1</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">

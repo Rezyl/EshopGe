@@ -32,6 +32,4 @@
     <p><a href="showByCategory?category=RANDOM" style="text-decoration: none"><font
             color="#07A9C3"><b>NÁHODNÉ</b></font></a></p>
 
-    <p><a target="I1" href="darkovyCertifikat.jsp">
-        <img border="0" src="/resources/img/darkovycf.png" width="230" height="205"></a></p>
 </div>

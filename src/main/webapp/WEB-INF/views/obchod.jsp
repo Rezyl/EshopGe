@@ -4,6 +4,7 @@
 <html>
 
 <head>
+<body style="overflow: scroll">
     <meta http-equiv="Content-Language" content="cs">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
 </head>
