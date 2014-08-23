@@ -10,7 +10,6 @@
 </head>
 <body bgcolor="#F9F9F6">
 <jsp:include page="menu.jsp"/>
-<div align="center">
     <jsp:include page="obchodleva.jsp"/>
     <jsp:include page="obchodObsah.jsp"/>
 </div>

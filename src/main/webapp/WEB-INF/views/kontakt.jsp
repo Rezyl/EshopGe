@@ -12,8 +12,8 @@
 <jsp:include page="menu.jsp"/>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
-<p align="center"><font face="Times New Roman" style="font-size: 13pt"><b><font color="#07A9C3"><span class="dot">&#9679;</span>&nbsp;
-    OFICIÁLNÍ KONTAKT&nbsp; <span class="dot">&#9679;</span></font></b></font></p>
+<p align="center"><font face="Times New Roman" style="font-size: 13pt"><b><font color="#07A9C3"></span>&nbsp;
+    OFICIÁLNÍ KONTAKT&nbsp; </span></font></b></font></p>
 
 <p>
     &nbsp;</p>
@@ -106,7 +106,7 @@
 <p align="center"><font face="Arial Unicode MS" color="#FFFFFF" size="3">
     <button class="btn btn-info ">Odeslat</button>
 </font></p>
-
+<jsp:include page="socialnisite.jsp"/>
 </body>
 
 </html>

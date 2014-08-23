@@ -5,8 +5,8 @@
 <body bgcolor="#F9F9F6" style="background-color: #F9F9F6">
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
-<p align="center"><font face="Times New Roman" style="font-size: 13pt"><b><font color="#07A9C3"><span class="dot">&#9679;</span>&nbsp;1.
-    NÁKUPNÍ KOŠÍK <span class="dot">&#9679;</span></font></b></font></p>
+<p align="center"><font face="Times New Roman" style="font-size: 13pt"><b><font color="#07A9C3">&nbsp;
+    NÁKUPNÍ KOŠÍK </font></b></font></p>
 
 <div align="center">
     <c:if test="${! empty SEARCH_ITEM_RESULTS_KEY}">

@@ -52,7 +52,7 @@
     <a href="mailto:čpníchve@mail.com" style="text-decoration: none">
         <font color="#000000">čpníchve@mail.com</font></a><br>
     Obchodní podmínky </font></p>
-
+<jsp:include page="socialnisite.jsp"/>
 </body>
 
 </html>
