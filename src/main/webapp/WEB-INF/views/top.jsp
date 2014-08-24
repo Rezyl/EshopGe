@@ -20,7 +20,7 @@
                                                                                              width="214" height="233"
                                                                                              align="texttop"><img
             border="0" src="/resources/img/3.png" width="214" height="233" align="texttop"></p>
-
-</body>
 <jsp:include page="socialnisite.jsp"/>
+</body>
+
 </html>
