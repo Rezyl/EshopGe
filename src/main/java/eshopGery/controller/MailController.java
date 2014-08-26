@@ -34,8 +34,10 @@ public class MailController {
     @RequestMapping(value = "/sendContact")
     public ModelAndView sendContactMessage(@ModelAttribute("contactMessage")EmailMessage message) {
         ModelAndView mav = new ModelAndView("redirect:kontakt");
+        message.setSubject(message.getTo()+"-"+message.getSubject());
+        message.setTo("l.rezner@gmail.com");
         //TODO ceske znaky
-//        service.sendInvitation(message);
+        service.sendEmail(message);
         return mav;
     }
 
