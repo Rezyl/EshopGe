@@ -104,8 +104,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("l.rezner@gmail.com");
-        mailSender.setPassword("xxx");
+        mailSender.setUsername("m.gerstberger91@gmail.com");
+        mailSender.setPassword("popelnice07");
 
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.auth", String.valueOf(true));
