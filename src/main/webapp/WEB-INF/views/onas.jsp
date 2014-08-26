@@ -46,7 +46,7 @@
 
 <p align="center">&nbsp;</p>
 
-<p align="center"><font face="Times New Roman">Hněvčeves 34, 50315 Nechanice |
+<p align="center"><font face="Arial">Hněvčeves 34, 50315 Nechanice |
     Provozovatel: Michal Gerstberger | IČO: 12312312<br>
     Tel.: 777 279 448 | Email:
     <a href="mailto:čpníchve@mail.com" style="text-decoration: none">
