@@ -6,7 +6,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-    <title>Košík</title>
+    <title>Košík - Bisonsocks.cz</title>
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body bgcolor="#F9F9F6" style="background-color: #F9F9F6">

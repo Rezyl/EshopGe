@@ -4,6 +4,7 @@
 <html>
 
 <head>
+    <title>Kontakt - Bisonsocks.cz</title>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>

@@ -24,7 +24,7 @@
                             </c:forEach>
                         </select>
                         <input name="itemID" type="hidden" value="${item.itemId}"/>
-                        <input type="submit" value="Kup!"/>
+                        <input type="submit" value="Přidat do košíku"/>
                     </form>
                 </div>
             </div>
