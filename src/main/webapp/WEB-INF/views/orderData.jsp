@@ -77,10 +77,14 @@
         <br>
         Cena celkem(přednastavena cena za doporučenou zásilku(+49Kč), v případě změny dopravy na dobírku měnit samozřejmě i celkovou cenu
         <br>
-      <br>
+
+        <br>
         <button class="btn btn-info" type= "submit">Odeslat objednávku</button>
     </form:form>
+    <br>
 
+    <br>
+    <img border="0" src="/resources/img/ponozky.png" width="104" height="113">
 </div>
 </body>
 

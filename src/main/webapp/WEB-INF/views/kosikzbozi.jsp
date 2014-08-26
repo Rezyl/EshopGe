@@ -44,7 +44,13 @@
         </font></p>
     </c:if>
     <c:if test="${empty SEARCH_ITEM_RESULTS_KEY}">
-        <span>Košík je prázdný</span>
+        <span>Nákupní košík je prázdný, je čas nakupovat!</span>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <img border="0" src="/resources/img/ponozky.png" width="104" height="113">
     </c:if>
 
 

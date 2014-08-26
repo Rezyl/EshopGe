@@ -11,7 +11,22 @@
 <body bgcolor="#F9F9F6">
 <jsp:include page="menu.jsp"/>
 <div align="center">
-    Objednávka proběhla uspěštně. Na vaši adresu byl odeslán email.
+    <p align="center"><font color="#07A9C3" face="Times New Roman" style="font-size: 13pt">
+        <b>Vaše objednávka byla úspěšně vytvořena.</b></font></p>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <font face="Arial">
+    Děkujeme za Vaši přízeň,
+    Bisonsocks.cz
+    </font>
+    <br>
+
+    <br>
+    <img border="0" src="/resources/img/ponozky.png" width="104" height="113">
 </div>
 </body>
 
