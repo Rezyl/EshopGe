@@ -36,12 +36,10 @@
 
 <p align="center">
     <img border="0" src="/resources/img/pozvatpritele.png" width="130" height="133"></p>
-
-<p align="center"><input type="text" name="T1" size="41" value="email"></p>
-
-<p align="center">
-    <button class="btn btn-info ">Odeslat</button>
-</p>
+<form action="sendEmail">
+<p align="center"><input type="text" name="emailAddress" maxlength="41" size="41" placeholder="email"></p>
+<p align="center"><button type="submit" class="btn btn-info " >Odeslat</button></p>
+</form>
 <p align="center">&nbsp;</p>
 
 <p align="center">&nbsp;</p>
@@ -51,7 +49,7 @@
     Tel.: 777 279 448 | Email:
     <a href="mailto:čpníchve@mail.com" style="text-decoration: none">
         <font color="#000000">čpníchve@mail.com</font></a><br>
-    <font color="#000000">  <a target="_top" href="JAKATADYMABEJTADRESA???????">Obchodní podmínky</a>  </font></p>
+    <font color="#000000">  <a target="_top" href="terms">Obchodní podmínky</a>  </font></p>
 <jsp:include page="socialnisite.jsp"/>
 </body>
 

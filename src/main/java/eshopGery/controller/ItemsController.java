@@ -64,7 +64,7 @@ public class ItemsController {
 			return new ModelAndView("redirect:saveShoppingItem");
         }
         service.createItem(item);
-		return new ModelAndView("redirect:adminPart", "message", message);
+		return new ModelAndView("redirect:adminPartShoppingItems", "message", message);
     }
 
 	@RequestMapping(value = "updateShoppingItemForm", method = RequestMethod.GET)

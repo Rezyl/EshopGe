@@ -6,8 +6,8 @@
 <head>
     <title>Obchod - Bisonsocks.cz</title>
 <body style="overflow: scroll">
-    <meta http-equiv="Content-Language" content="cs">
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+    <meta http-equiv="Content-Language" content="cs"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
 </head>
 <body bgcolor="#F9F9F6">
 <jsp:include page="menu.jsp"/>

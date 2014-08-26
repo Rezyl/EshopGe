@@ -1,5 +1,8 @@
 package eshopGery.config;
 
+import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -16,6 +20,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.spring3.SpringTemplateEngine;
+import org.thymeleaf.spring3.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @Configuration
 @ComponentScan(basePackages= "eshopGery")
@@ -90,5 +97,48 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
 		resolver.setMaxUploadSize(100000);
 		return resolver;
- }
+    }
+
+    @Bean(autowire = Autowire.BY_TYPE)
+    public org.springframework.mail.javamail.JavaMailSender mailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        mailSender.setUsername("l.rezner@gmail.com");
+        mailSender.setPassword("xxx");
+
+        Properties properties = new Properties();
+        properties.setProperty("mail.smtp.auth", String.valueOf(true));
+        properties.setProperty("mail.smtp.starttls.enable", String.valueOf(true));
+        mailSender.setJavaMailProperties(properties);
+        return mailSender;
+    }
+
+    /**
+     * THYMELEAF: Template Resolver for email templates
+     */
+    @Bean
+    public ClassLoaderTemplateResolver emailTemplateResolver() {
+        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
+        resolver.setPrefix("/other/invitation_email/");
+        resolver.setTemplateMode("HTML5");
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setOrder(1);
+        return resolver;
+    }
+    
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(emailTemplateResolver());
+        return templateEngine;
+    }
+
+    @Bean
+    public ThymeleafViewResolver viewResolver() {
+        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
+        return viewResolver;
+    }
 }

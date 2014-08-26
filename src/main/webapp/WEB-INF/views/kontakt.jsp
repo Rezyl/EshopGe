@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
+<%@include file="taglib_imports.jsp" %>
 <body bgcolor="#F9F9F6" style="background-color: #F9F9F6">
 <jsp:include page="menu.jsp"/>
 <script src="http://code.jquery.com/jquery.js"></script>
@@ -20,6 +20,7 @@
     &nbsp;</p>
 
 <div align="center">
+    <form:form action="sendContact" modelAttribute="contactMessage">
 
     <table class="tabform" cellpadding="4" cellspacing="0" width="760" height="519">
         <tr>
@@ -30,9 +31,10 @@
 
                 <p align="left">
 
-	<span>
-		<font color="#FFFFFF" size="3" face="Arial Unicode MS">
-            <input class="input_text" name="conlname" size="26"></font></span></td>
+	            <span>
+                    <input type="text" class="form-control" name="to" id="to" placeholder="Jméno">
+                </span>
+            </td>
             <td class="paramvalue" width="532" height="21" align="justify">
 
                 &nbsp;</td>
@@ -42,12 +44,11 @@
                 <p align="left">
                     <font face="Times New Roman">Email:</font></td>
             <td class="paramvalue" width="532" height="21" align="justify">
-
                 <p align="left">
-
-	<span>
-		<font color="#FFFFFF" size="3" face="Arial Unicode MS">
-            <input class="input_text" name="conlname3" size="26"></font></span></td>
+            	<span>
+                    <input type="email" class="form-control" name="from" id="from" placeholder="Email">
+                </span>
+            </td>
             <td class="paramvalue" width="532" height="21" align="justify">
 
                 &nbsp;</td>
@@ -56,35 +57,20 @@
             <td class="paramname" width="213" align="justify">
                 <font face="Times New Roman">Kategorie:</font></td>
             <td class="paramvalue" width="532" align="justify">
-
-                <form method="POST" action="--WEBBOT-SELF--">
-                    <!--webbot bot="SaveResults" U-File="fpweb:///_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
-                    <p><font face="Times New Roman" color="#FFFFFF">
-                        <input type="radio" value="V" checked name="R1" tabindex="1"></font><font
-                            face="Times New Roman">
-                        Hodnocení</font></p>
-                </form>
-                <form method="POST" action="--WEBBOT-SELF--">
-                    <!--webbot bot="SaveResults" U-File="fpweb:///_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
-                    <p><font face="Times New Roman" color="#FFFFFF">
-                        <input type="radio" value="V" name="R1" tabindex="1" checked></font><font
-                            face="Times New Roman">
-                        Moje objednávka</font></p>
-                </form>
-                <form method="POST" action="--WEBBOT-SELF--">
-                    <!--webbot bot="SaveResults" U-File="fpweb:///_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
-                    <p><font face="Times New Roman" color="#FFFFFF">
-                        <input type="radio" value="V" name="R1" tabindex="1" checked></font><font
-                            face="Times New Roman">
-                        Barva/model/velikost</font></p>
-                </form>
-                <form method="POST" action="--WEBBOT-SELF--">
-                    <!--webbot bot="SaveResults" U-File="fpweb:///_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
-                    <p><font face="Times New Roman" color="#FFFFFF">
-                        <input type="radio" value="V" name="R1" tabindex="1" checked></font><font
-                            face="Times New Roman">
-                        Ostatní</font></p>
-                </form>
+                <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default active" >
+                        <form:radiobutton path="subject" value="Hodnocení"/>Hodnoceni
+                        </label >
+                        <label class="btn btn-default" >
+                            <form:radiobutton path="subject" value="Moje objednávka"/>Moje objednávka
+                        </label >
+                        <label class="btn btn-default" >
+                            <form:radiobutton path="subject" value="Barva/model/velikost"/>Barva/model/velikost
+                        </label >
+                        <label class="btn btn-default" >
+                            <form:radiobutton path="subject" value="Ostatní"/>Ostatní
+                        </label >
+                </div>
             </td>
             <td class="paramvalue" width="532" align="justify">
 
@@ -95,7 +81,7 @@
                 <p align="left"><font face="Times New Roman">Zpráva:</font></td>
             <td class="paramvalue" width="532" align="justify" height="246">
 
-                <p align="left"><textarea rows="10" name="S1" cols="47"></textarea></td>
+                <p align="left"><textarea id="message" rows="10" name="message" cols="47"></textarea></td>
             <td class="paramvalue" width="532" align="justify" height="246">
 
                 &nbsp;</td>
@@ -105,7 +91,8 @@
 </div>
 
 <p align="center"><font face="Arial Unicode MS" color="#FFFFFF" size="3">
-    <button class="btn btn-info ">Odeslat</button>
+    <button type="submit" class="btn btn-info ">Odeslat</button>
+    </form:form>
 </font></p>
 <jsp:include page="socialnisite.jsp"/>
 </body>

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import eshopGery.model.EmailMessage;
+
 @Controller
 public class BasicNavigateController {
 
@@ -29,11 +31,16 @@ public class BasicNavigateController {
 
 	@RequestMapping(value = "/kontakt")
 	public ModelAndView getFrameKontakt() {
-		return new ModelAndView("kontakt");
+		return new ModelAndView("kontakt","contactMessage", new EmailMessage());
 	}
 
 	@RequestMapping(value = "/obchodleva")
 	public ModelAndView getObchodLeva() {
 		return new ModelAndView("obchodleva");
 	}
+
+    @RequestMapping(value = "/terms")
+    public ModelAndView getTerms() {
+        return new ModelAndView("obchodnipodminky");
+    }
 }
