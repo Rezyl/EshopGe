@@ -5,94 +5,114 @@
 
 <head>
 <body style="overflow: scroll">
-    <meta http-equiv="Content-Language" content="en-us">
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="cs"/>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
 </head>
 <body style="overflow: scroll">
 <body>
 <jsp:include page="menu.jsp"/>
 
-<p align="center"><font color="#07A9C3"><b>OBCHODNÍ PODMÍNKY</b></font></p>
-<p><b><font color="#07A9C3">Doru&#269;ení</font><br>
+<p align="center"><font color="#07A9C3"><b>OBCHODNÃ PODMÃNKY</b></font></p>
+<p><b><font color="#07A9C3">DoruÄenÃ­</font><br>
 </b>
 <br>
-Všechno zboží máme skladem, takže ne&#269;ekáme a m&#367;žeme rovnou posílat. </p>
-<p><strong style="font-weight: 400">Objednávky p&#345;ijaté v pracovní dny do 12:00 
-odesíláme ješt&#283; ten samý den, objednávky p&#345;ijaté po 12:00 odesíláme následující 
-pracovní den</strong>.<br>
-<strong style="font-weight: 400">Samotná p&#345;eprava pak trvá v naprosté v&#283;tšin&#283; 
-p&#345;ípad&#367; 1 pracovní den. Pokud by vás na uvedené adrese poš&#357;ák nezastihl, 
-zastavte se na p&#345;íslušné pobo&#269;ce &#268;eské Pošty, kde bude balík na vaše jméno 
-uložen po dobu 7 dn&#367;.</strong>&nbsp;</p>
-<p>Doru&#269;ování zboží zajiš&#357;ujeme prost&#345;ednictvím &#268;eské Pošty a.s. <b>
-<span style="font-size: 13pt">Cena poštovného je 39K&#269;</span></b><span style="font-size: 13pt"><b>, 
-nezáleží na po&#269;tu objednaných ponožek</b>.</span> Neru&#269;íme za 
-zboží b&#283;hem p&#345;epravy a nem&#367;že zajistit náhradu škody zp&#367;sobenou špatným 
-zacházením dopravce. Kupující je povinen p&#345;ijatou zásilku p&#345;evzít, zkontrolovat 
-neporušenost obal&#367; a v p&#345;ípad&#283; jakýchkoli závad vše ihned ohlásit p&#345;epravci 
-samotnému. <strong style="font-weight: 400">V žádném p&#345;ípad&#283; prosím nep&#345;ebírejte 
-porušené zásilky.</strong> Všechny zásilky jsou uzav&#345;eny bezpe&#269;nostní lepící 
-páskou, proto v p&#345;ípad&#283; porušení pásky zásilku odmítn&#283;te p&#345;evzít. P&#345;evzetím 
-zásilky kupující stvrzuje, že zásilka spl&#328;ovala všechny podmínky a na pozd&#283;jší 
-reklamace související s p&#345;epravou nebude brán z&#345;etel.<br>
+    <font face="arial">
+VÅ¡echno zboÅ¾Ã­ mÃ¡me skladem, takÅ¾e neÄekÃ¡me a mÅ¯Å¾eme rovnou posÃ­lat. </p>
+<p><strong style="font-weight: 400">ObjednÃ¡vky pÅ™ijaty v pracovnÃ­ dny do 12:00
+odesÃ­lÃ¡me jeÅ¡tÄ› ten samÃ½ den, objednÃ¡vky pÅ™ijaty po 12:00 odesÃ­lÃ¡me nÃ¡sledujÃ­cÃ­
+pracovnÃ­ den</strong>.<br>
+<strong style="font-weight: 400">SamotnÃ¡ pÅ™eprava pak trvÃ¡ v naprostÃ© vÄ›tÅ¡inÄ›
+pÅ™Ã­padÅ¯ 1 pracovnÃ­ den. Pokud by vÃ¡s na uvedenÃ© adrese poÅ¡Å¥Ã¡k nezastihl,
+zastavte se na pÅ™Ã­sluÅ¡nÃ© poboÄce ÄŒeskÃ© PoÅ¡ty, kde bude balÃ­k na vaÅ¡e jmÃ©no
+uloÅ¾en po dobu 7 dnÅ¯;.</strong>&nbsp;</p>
+<p>DoruÄovÃ¡nÃ­ zboÅ¾Ã­ zajiÅ¡Å¥ujeme prostÅ™ednictvÃ½m ÄŒeskÃ© PoÅ¡ty a.s.<br> <b>
+<span style="font-size: 13pt">Cena poÅ¡tovnÃ©ho a balnÃ©ho je 49KÄ v pÅ™Ã­padÄ› platby pÅ™edem pÅ™evodem na ÃºÄet, v pÅ™Ã­padÄ› platby dobÃ­rkou je cena poÅ¡tovnÃ©ho a balnÃ©ho stanovena na 89KÄ. <br></span></b><span style="font-size: 13pt"><b>
+</b></span> NeruÄÃ­me za
+zboÅ¾Ã­ bÄ›hem pÅ™epravy a nemÅ¯Å¾eme zajistit nÃ¡hradu Å¡kody zpÅ¯sobenou Å¡patnÃ½m
+zachÃ¡zenÃ­m dopravce. KupujÃ­cÃ­ je povinen pÅ™ijatou zÃ¡silku pÅ™evzÃ­t, zkontrolovat
+neporuÅ¡enost obalÅ¯ a v pÅ™Ã­padÄ› jakÃ½chkoli zÃ¡vad vÅ¡e ihned ohlÃ¡sit pÅ™epravci
+samotnÃ©mu. <strong style="font-weight: 400">V Å¾Ã¡dnÃ©m pÅ™Ã­padÄ› prosÃ­m nepÅ™bÃ­rejte
+poruÅ¡enÃ© zÃ¡silky.</strong> VÅ¡echny zÃ¡silky jsou uzavÅ™eny bezpeÄnostnÃ­ lepÃ­cÃ­
+pÃ¡skou, proto v pÅ™Ã­padÄ› poruÅ¡enÃ© pÃ¡sky zÃ¡silku odmÃ­tnÄ›te pÅ™evzÃ­t. PÅ™evzetÃ©mm
+zÃ¡silky kupujÃ­cÃ­ stvrzuje, Å¾e zÃ¡silka splÅˆovala vÅ¡echny podmÃ­nky a na pozdÄ›jÅ¡Ã­
+reklamace souvisejÃ­cÃ­ s pÅ™epravou nebude brÃ¡n zÅ™etel.
+</font>
+    <br>
 <br>
 <b><font color="#07A9C3">Platba</font><br>
 &nbsp;</b></p>
-<p><b>Platba kartou</b></p>
-<p><b>**</b></p>
+<font face="arial">
+<p><b>
+Platba pÅ™evodem</b></p>
+
+<p>Po dokonÄenÃ­ objednÃ¡vky <strong style="font-weight: 400">obdrÅ¾Ã­te emailem
+informace</strong> k platbÄ› pÅ™evodem. ObjednanÃ© zboÅ¾Ã­ odesÃ­lÃ¡me v den, kdy se
+nÃ¡m platba pÅ™ipÃ­Å¡e na ÃºÄet. <strong style="font-eight: 400">Na vaÅ¡i platbu
+budeme Äekat po dobu sedmi pracovnÃ­ch dnÅ¯;</strong>. Pokud se do tÃ© doby ÄÃ¡stka
+nepÅ™ipÃ­Å¡e na nÃ¡Å¡ ÃºÄet, budeme nuceni objednÃ¡vku stornovat.</p>
 <p><b><br>
-Platba p&#345;evodem</b></p>
-<p>Po dokon&#269;ení objednávky <strong style="font-weight: 400">obdržíte emailem 
-informace</strong> k platb&#283; p&#345;evodem. Objednané zboží odesíláme v den, kdy se 
-nám platba p&#345;ipíše na ú&#269;et. <strong style="font-weight: 400">Na vaší platbu 
-budeme &#269;ekat po dobu sedmi pracovních dn&#367;</strong>. Pokud se do té doby &#269;ástka 
-nep&#345;ipíše na náš ú&#269;et, budeme nuceni objednávku stornovat.</p>
+    Platba dobÃ­rkou</b></p>
+
+<p>Po dokonÄenÃ­ objednÃ¡vky <strong style="font-weight: 400">obdrÅ¾Ã­te emailem
+    informace</strong> o pÅ™ijetÃ­ objednÃ¡vky. Za zboÅ¾Ã­ platÃ­te poÅ¡Å¥Ã¡kovi aÅ¾ pÅ™i jeho doruÄenÃ­.</p>
+    </font>
 <p>&nbsp;</p>
-<h2 id="vymena"><font color="#07A9C3" size="3">Vým&#283;na a vrácení zboží</font></h2>
-<p><strong><span style="font-size: 13pt">Pokud vám zboží nesedí, není problém.
-</span></strong>Ur&#269;it&#283; nechceme, abyste m&#283;li doma n&#283;co, co nebudete nosit.
-<strong style="font-weight: 400">Máte možnost vým&#283;ny nebo vrácení zboží bez 
-udání d&#367;vodu ve lh&#367;t&#283; 14 dní ode dne, kdy vám zásilka dorazila.</strong> Sta&#269;í 
-se držet t&#283;chto podmínek:</p>
+<h2 id="vymena"><font color="#07A9C3" size="3">VÃ½mÄ›na a vrÃ¡cenÃ­ zboÅ¾Ã­</font></h2>
+<p><strong><span style="font-size: 13pt">
+    <font face="arial">
+    Pokud vÃ¡m zboÅ¾Ã­ nesedÃ­, nenÃ­ problÃ©m.
+</span></strong>UrÄitÄ›; nechceme, abyste mÄ›li doma nÄ›co, co nebudete nosit.
+<strong style="font-weight: 400">MÃ¡te moÅ¾nost vÃ½mÄ›ny nebo vrÃ¡cenÃ­ zboÅ¾Ã­ bez
+udÃ¡nÃ­ dÅ¯vodu ve lhÅ¯tÄ› 14 dnÅ¯ ode dne, kdy vÃ¡m zÃ¡silka dorazila.</strong> StaÄÃ­
+se drÅ¾et tÄ›chto podmÃ­nek:</p>
 <ul class="ul-list">
-	<li><strong style="font-weight: 400">Zákazník odešle zásilku doporu&#269;en&#283; na 
-	naši adresu (ne na dobírku) nejpozd&#283;ji do 14 dn&#367; od obdržení zboží.</strong></li>
-	<li><strong style="font-weight: 400">Zboží nesmí jevit známky jakéhokoliv 
-	opot&#345;ebení a zne&#269;išt&#283;ní a musí být zasláno zp&#283;t.</strong></li>
+	<li><strong style="font-weight: 400">ZÃ¡kaznÃ­k odeÅ¡le zÃ¡silku doporuÄenÄ› na
+	naÅ¡i adresu (ne na dobÃ­rku) nejpozdÄ›ji do 14 dnÅ¯ od obdrÅ¾enÃ­ zboÅ¾Ã­.</strong></li>
+	<li><strong style="font-weight: 400">ZboÅ¾Ã­ nesmÃ­ jevit znÃ¡mky jakÃ©hokoliv
+	opotÅ™ebenÃ­ a zneÄiÅ¡tÄ›nÃ­ a musÃ­ bÃ½t zaslÃ¡no zpÄ›t.</strong></li>
 </ul>
-<p>Jakmile nám bude zboží doru&#269;eno, zkontrolujeme ho a pokud nebude nijak 
-opot&#345;ebené nebo porušené, provedeme vým&#283;nu. V p&#345;ípad&#283; vým&#283;ny si zákazník vybere 
-jakoukoliv v&#283;c z nabídky a p&#345;ípadný rozdíl v cen&#283; uhradí (nebo mu bude vrácen 
-p&#345;eplatek, pokud vym&#283;n&#283;ná v&#283;c bude mít nižší hodnotu).
-<strong style="font-weight: 400">V p&#345;ípad&#283; vým&#283;ny nebo vrácení zboží bude 
-zákazníkovi vrácena i &#269;ástka placená za doru&#269;ení, pokud ho u p&#367;vodní objednávky 
-platil.</strong> Dopravu zboží od zákazníka hradí vždy zákazník.<br>
+<p>Jakmile nÃ¡m bude zboÅ¾Ã­ doruÄeno, zkontrolujeme ho a pokud nebude nijak
+opotÅ™ebenÃ© nebo poruÅ¡enÃ©, provedeme vÃ½mÄ›nu. V pÅ™Ã­padÄ› vÃ½mÄ›ny si zÃ¡kaznÃ­k vybere
+jakoukoliv vÄ›c z nabÃ­dky a pÅ™Ã­padnÃ½ rozdÃ­l v cenÄ› uhradÃ­ (nebo mu bude vrÃ¡cen
+pÅ™eplatek, pokud vymÄ›nÄ›nÃ¡ vÄ›c bude mÃ­t niÅ¾Å¡Ã­ hodnotu).
+<strong style="font-weight: 400">V pÅ™Ã­padÄ› vÃ½mÄ›ny nebo vrÃ¡cenÃ­ zboÅ¾Ã­ bude
+zÃ¡kaznÃ­kovi vrÃ¡cena i ÄÃ¡stka placenÃ¡ za doruÄenÃ­, pokud ho u pÅ¯vodnÃ­ objednÃ¡vky
+    platil.</strong> Dopravu zboÅ¾Ã­ od zÃ¡kaznÃ­ka hradÃ­ vÅ¾dy zÃ¡kaznÃ­k.<br>
+    </font>
 &nbsp;</p>
 <p>&nbsp;</p>
-<h2 id="reklamace"><font size="3" color="#07A9C3">Reklamace zboží / Záruka</font></h2>
-<p>Záru&#269;ní lh&#367;ta je zákonem stanovena na 24 m&#283;síc&#367;, u našeho zboží slouží da&#328;ový 
-doklad (faktura) zárove&#328; jako záru&#269;ní list. Nároky z odpov&#283;dnosti za vady a ze 
-záruky (reklamace) se nevztahují na závady zp&#367;sobené nesprávným použitím a 
-opot&#345;ebením neodpovídajícím zp&#367;sobem. <strong style="font-weight: 400">Zákazník 
-je povinen uplatnit reklamaci neprodlen&#283; po vzniku vady.</strong>
-<strong style="font-weight: 400">Reklamované zboží nám musí být doru&#269;eno spolu s 
-písemným oznámením vad</strong>, a obsahovat by m&#283;lo i volbu vypo&#345;ádání nároku 
-kupujícího podle zákona, jinak bude reklamace považována za neplatnou.<strong style="font-weight: 400">
-</strong>Také musí být p&#345;iložena kopie originálního dokladu o koupi zboží.</p>
-<p>Reklamaci budeme posuzovat v souladu s pokyny stanovenými výrobcem zboží nebo 
-jeho zástupcem, resp. <strong style="font-weight: 400">výrobci takové zboží 
-odešleme k vyjád&#345;ení a vy&#345;ízení</strong>. Reklamované zboží nám prosím pošlete 
-&#345;ádn&#283; zabalené proti poškození p&#345;i p&#345;eprav&#283;. Náklady spojené se zasláním 
-reklamovaného zboží sm&#283;rem od zákazníka nese zákazník. V p&#345;ípad&#283; kladného 
-vy&#345;ízení reklamace je zákazníkovi zasláno opravené nebo vym&#283;n&#283;né zboží zp&#283;t na 
-naše náklady. <strong style="font-weight: 400">Maximální doba vy&#345;ízení reklamace 
-je zákonem stanovena na 30 dní, ale snažíme se vše maximáln&#283; urychlit.</strong></p>
+<h2 id="reklamace"><font size="3" color="#07A9C3">Reklamace zboÅ¾Ã­ / ZÃ¡ruka</font></h2>
+<font face="arial">
+<p>ZÃ¡ruÄnÃ­ lhÅ¯ta je zÃ¡konem stanovena na 24 mÄ›sÃ­cÅ¯, u naÅ¡eho zboÅ¾Ã­ slouÅ¾Ã­ daÅˆovÃ½
+doklad (faktura) zÃ¡roveÅˆ jako zÃ¡ruÄnÃ­ list. NÃ¡roky z odpovÄ›dnosti za vady a ze
+zÃ¡ruky (reklamace) se nevztahujÃ­ na zÃ¡vady zpÅ¯sobenÃ© nesprÃ¡vnÃ½m pouÅ¾itÃ­m a
+opotÅ™ebenÃ­m neodpovÃ­dajÃ­cÃ­m zpÅ¯sobem. <strong style="font-weight: 400">ZÃ¡kaznÃ­k
+je povinen uplatnit reklamaci neprodlenÄ› po vzniku vady.</strong>
+<strong style="font-weight: 400">ReklamovanÃ­ zboÅ¾Ã­ nÃ¡m musÃ­ bÃ½t doruÄeno spolu s
+pÃ­semnÃ½m oznÃ¡menÃ­m vad</strong>, a obsahovat by mÄ›lo i volbu vypoÅ™Ã¡dÃ¡nÃ­ nÃ¡roku
+kupujÃ­cÃ­ho podle zÃ¡kona, jinak bude reklamace povaÅ¾ovÃ¡na za neplatnou.<strong style="font-weight: 400">
+</strong>TakÃ© musÃ­ bÃ½t pÅ™iloÅ¾ena kopie originÃ­lnÃ­ho dokladu o koupi zboÅ¾Ã­.</p>
+<p>Reklamaci budeme posuzovat v souladu s pokyny stanovenÃ½mi vÃ½robcem zboÅ¾Ã­ nebo
+jeho zÃ¡stupcem, resp. <strong style="font-weight: 400">vÃ½robci takovÃ© zboÅ¾Ã­
+odeÅ¡leme k vyjÃ¡dÅ™enÃ­ a vyÅ™Ã­zenÃ­</strong>. ReklamovanÃ­ zboÅ¾Ã­ nÃ¡m prosÃ­m poÅ¡lete
+Å™Ã¡dnÄ› zabaleno proti poÅ¡kozenÃ­ pÅ™i pÅ™epravÄ›. NÃ¡klady spojenÃ© se zaslÃ¡nÃ­m
+reklamovanÃ©ho zboÅ¾Ã­ smÄ›rem od zÃ¡kaznÃ­ka nese zÃ¡kaznÃ­k. V pÅ™Ã­padÄ› kladnÃ©ho
+vyÅ™Ã­zenÃ­ reklamace je zÃ¡kaznÃ­kovi zaslÃ¡no opravenÃ© nebo vymÄ›nÄ›nÃ© zboÅ¾Ã­ zpÄ›t na
+naÅ¡e nÃ¡klady. <strong style="font-weight: 400">MaximÃ¡lnÃ­ doba vyÅ™Ã­zenÃ­ reklamace
+je zÃ¡konem stanovena na 30 dnÅ¯, ale snaÅ¾Ã­me se vÅ¡e maximÃ¡lnÄ› urychlit.</strong></p>
+</font>
 <p>&nbsp;</p>
 <h3>&nbsp;</h3>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
+<center>
+<font face="Arial">
+    DÄ›kujeme za VaÅ¡i pÅ™Ã­zeÅˆ,
+    Bisonsocks.cz
+</font>
+<br>
 
+<br>
+<img border="0" src="/resources/img/ponozky.png" width="104" height="113">
+</center>
 <jsp:include page="socialnisite.jsp"/>
 </body>
 

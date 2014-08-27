@@ -63,8 +63,8 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
-            <tr><td>Souhlasím s podmínkami</td>
-                <td>CHECKBOX</td>
+            <tr><td>Souhlasím s <a target="_blank" href="terms">podmínkami</a></td>
+                <td><input type="checkbox" checked name="checkbox" value="ano"></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td></tr>
         <br>
