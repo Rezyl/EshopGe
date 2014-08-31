@@ -33,6 +33,9 @@ public class ShoppingItem {
 	@Column
 	private String imageFilePath;
 
+    @Column
+    private String imageForGallery;
+
  public Long getItemId() {
         return itemId;
     }
@@ -88,6 +91,14 @@ public class ShoppingItem {
 	public void setImageFilePath(String imageFilePath) {
 		this.imageFilePath = imageFilePath;
 	}
+
+    public String getImageForGallery() {
+        return imageForGallery;
+    }
+
+    public void setImageForGallery(String imageForGallery) {
+        this.imageForGallery = imageForGallery;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,5 +1,6 @@
 package eshopGery.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,12 +68,19 @@ public class ItemsController {
 
 	@RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "saveShoppingItem", method = RequestMethod.POST)
 	public ModelAndView create(@ModelAttribute("shoppingItem") ShoppingItem item, BindingResult result, @RequestParam("file") MultipartFile file,
-			HttpSession session) {
+                               @RequestParam("filesForGallery") MultipartFile[] filesForGallery, HttpSession session) {
 		String message;
 		// TODO valid correct file type
 		// if (!file.isEmpty() && file.getContentType().equals(XLS_FORMAT) || file.getContentType().equals(XLSX_FORMAT)) {
 		String imagePath = service.uploadImage(getRootDirToSaveImages(session), file);
-		if (imagePath != null) {
+        //IMAGE GALLERY
+        List<String> imagesForGallery = new ArrayList<String>();
+		for (MultipartFile multipartFile : filesForGallery) {
+            String imageGallery = service.uploadImage(getRootDirToSaveImages(session), multipartFile);
+            imagesForGallery.add(imageGallery);
+		}
+        item.setImageForGallery(service.decodeImagesPath(imagesForGallery));
+        if (imagePath != null) {
 			message = "Success!";
 
 			item.setImageFilePath(imagePath);
@@ -143,4 +151,13 @@ public class ItemsController {
 		mav.addObject("sizeList", SizeOfSock.values());
 		return mav;
 	}
+
+    @RequestMapping(value = "/showGallery", method = RequestMethod.GET)
+    public ModelAndView showModalGallery(@RequestParam("itemId") Long itemID) {
+        ModelAndView mav = new ModelAndView("imageGallery");
+        ShoppingItem shoppingItem = service.findItemById(itemID);
+        List<String> images = service.encodeImagesPath(shoppingItem.getImageForGallery());
+        mav.addObject("images", images);
+        return mav;
+    }
 }

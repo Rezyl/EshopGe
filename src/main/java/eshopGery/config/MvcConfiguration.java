@@ -29,6 +29,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Import({SecurityConfig.class})
 public class MvcConfiguration extends WebMvcConfigurerAdapter{
 
+    private static final int ONE_MEGABYTE = 1000000;
     //TODO properties file
 //    @Value("${jdbc.driverClassName}")
     @Value("com.mysql.jdbc.Driver")
@@ -93,7 +94,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-		resolver.setMaxUploadSize(100000);
+		resolver.setMaxUploadSize(ONE_MEGABYTE);
 		return resolver;
     }
 
@@ -118,13 +119,14 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     @Bean
     public ClassLoaderTemplateResolver emailTemplateResolver() {
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
-        resolver.setPrefix("/other/invitation_email/");
+        resolver.setPrefix("/WEB-INF/");
+        resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
         resolver.setCharacterEncoding("UTF-8");
         resolver.setOrder(1);
         return resolver;
     }
-    
+
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();

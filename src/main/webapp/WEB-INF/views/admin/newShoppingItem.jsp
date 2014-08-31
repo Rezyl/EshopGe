@@ -23,7 +23,13 @@
     <div class="col_400 float_l">
 
         <form:form method="POST" modelAttribute="shoppingItem" action="saveShoppingItem" enctype='multipart/form-data'>
+            <label for="file">Obrázek položky</label>
             <input type="file" name="file" id="file"/>
+            <br>
+            <br>
+
+            <label for="filesForGallery">Obrázky pro galerii</label>
+            <input type="file" name="filesForGallery" id="filesForGallery" multiple/>
             <br>
             <br>
 

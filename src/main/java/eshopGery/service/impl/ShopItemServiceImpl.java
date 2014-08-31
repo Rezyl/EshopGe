@@ -2,6 +2,7 @@ package eshopGery.service.impl;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,4 +111,19 @@ public class ShopItemServiceImpl implements ShopItemService {
 	public List<ShoppingItem> getAllItemsByUserId(String UserId) {
 		return null;
 	}
+
+    @Override
+    public String decodeImagesPath(List<String> imagesPath) {
+        StringBuilder result = new StringBuilder();
+        for (String path : imagesPath) {
+            result.append(path).append("|");
+        }
+        return result.toString();
+    }
+
+    @Override
+    public List<String> encodeImagesPath(String decodePath) {
+        String[] imagesPath = decodePath.split("\\|");
+        return Arrays.asList(imagesPath);
+    }
 }
