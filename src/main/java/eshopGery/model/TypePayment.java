@@ -7,7 +7,8 @@ package eshopGery.model;
  */
 public enum TypePayment {
 
-	CASH("Dobírka, Česká pošta (+89Kč)"), CREDIT_CARD("Převodem na účet, Česká pošta (+49Kč)");
+	CASH("Dobírka, Česká pošta (+89Kč)"), CREDIT_CARD("Převodem na účet, Česká pošta (+49Kč)"),
+    PERSONAL("Osobní odběr v Hradci Králové (0Kč)");
 
 	private String displayName;
 
