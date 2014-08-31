@@ -14,7 +14,7 @@
                 <img style="display: block" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
                      width="214" height="233">
                 <span style="display: block" id="name"><c:out value="${item.name}"/></span>
-                <div>Ahoj, já jsem rampampam ponožka, která má 90% vlny a  10% ledu</div>
+
                 <span style="display: block" id="price"><c:out value="${item.price} Kč"/></span>
 
                 <div>

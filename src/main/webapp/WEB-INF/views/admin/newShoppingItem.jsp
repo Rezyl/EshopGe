@@ -54,16 +54,16 @@
             <br>
             Velikost:
             <br>
-            35-40<input type="checkbox" checked name="35-40" value="ano">
+            34-41<input type="checkbox" checked name="35-40" value="ano">
             <br>
-            35-41<input type="checkbox" checked name="35-41" value="ano">
+            34-42<input type="checkbox" checked name="35-41" value="ano">
             <br>
 
-            36-41<input type="checkbox" checked name="36-41" value="ano">
+            35-42<input type="checkbox" checked name="36-41" value="ano">
             <br>
-            39-45<input type="checkbox" checked name="39-45" value="ano">
+            38-46<input type="checkbox" checked name="39-45" value="ano">
             <br>
-            40-45<input type="checkbox" checked name="40-45" value="ano">
+            39-46<input type="checkbox" checked name="40-45" value="ano">
             <br>
             <br>
 
