@@ -4,10 +4,7 @@ import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -29,6 +26,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @EnableWebMvc
 @PropertySource("classpath:config.properties")
 @EnableTransactionManagement
+@Import({SecurityConfig.class})
 public class MvcConfiguration extends WebMvcConfigurerAdapter{
 
     //TODO properties file
@@ -65,7 +63,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         LocalSessionFactoryBean session = new LocalSessionFactoryBean();
         session.setPackagesToScan("eshopGery");
         session.setDataSource(dataSource());
-		session.setAnnotatedPackages(new String[] { "eshopGery" });
+		session.setAnnotatedPackages("eshopGery");
         session.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
         return session;
     }

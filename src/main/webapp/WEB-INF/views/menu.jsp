@@ -4,7 +4,7 @@
 <body bgcolor="#F9F9F6">
 
 <p align="center">
-    <a href="adminPartShoppingItems"><img border="0" src="/resources/img/logovlevo.png"></a>
+    <a href="admin/adminPartShoppingItems"><img border="0" src="/resources/img/logovlevo.png"></a>
     <img border="0" src="/resources/img/logovpravo.png" width="570" height="143"></p>
 
 <p align="center"><img border="0" src="/resources/img/oddelovac.bmp" width="980" height="4"></p>

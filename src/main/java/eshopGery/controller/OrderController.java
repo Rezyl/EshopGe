@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import eshopGery.model.Order;
 import eshopGery.model.ShoppingItem;
 import eshopGery.model.TypePayment;
+import eshopGery.service.api.EshopConstants;
 import eshopGery.service.api.OrderService;
 import eshopGery.service.api.ShopItemService;
 
@@ -28,7 +29,7 @@ import eshopGery.service.api.ShopItemService;
 @SessionAttributes(OrderService.ORDER_SESSION_OBJECT)
 public class OrderController {
 
-	@Autowired
+    @Autowired
 	private OrderService orderService;
 
 	@Autowired
@@ -109,7 +110,11 @@ public class OrderController {
 
 	}
 
-	@RequestMapping("/adminPartOrders")
+    /**
+     * ADMIN PART
+     */
+
+	@RequestMapping(EshopConstants.ADMIN_PART_PREFIX + "adminPartOrders")
 	public ModelAndView getAllItems(WebRequest webRequest) {
 		ModelAndView mav = new ModelAndView("/admin/administration");
 		List<Order> orders = orderService.getAllItems();
