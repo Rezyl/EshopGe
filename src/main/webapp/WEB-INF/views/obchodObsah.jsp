@@ -11,8 +11,9 @@
     <c:if test="${! empty SEARCH_ITEM_RESULTS_KEY}">
         <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
             <div id="ShoppingItem" style="float: left; width: 30%; align-content: center">
+                <a href="showGallery?itemId=${item.itemId}" data-toggle="modal" data-target="#myModal">
                 <img style="display: block" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
-                     width="214" height="233">
+                     width="214" height="233"></a>
                 <span style="display: block" id="name"><c:out value="${item.name}"/></span>
                 <div>Ahoj, já jsem rampampam ponožka, která má 90% vlny a  10% ledu</div>
                 <span style="display: block" id="price"><c:out value="${item.price} Kč"/></span>
@@ -27,6 +28,14 @@
                         <input name="itemID" type="hidden" value="${item.itemId}"/>
                         <input type="submit" value="Přidat do košíku"/>
                     </form>
+                </div>
+            </div>
+            <!-- Modal HTML -->
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Content will be loaded here from "remote jsp" file -->
+                    </div>
                 </div>
             </div>
         </c:forEach>

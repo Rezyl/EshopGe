@@ -28,6 +28,10 @@ public interface ShopItemService {
 
 	public String uploadImage(String pathToDirectory, MultipartFile file);
 
+    public String decodeImagesPath(List<String> imagesPath);
+
+    public List<String> encodeImagesPath(String decodePath);
+
 	public boolean deleteImage(String fullPath);
 
 	public void addItemToOrder();
