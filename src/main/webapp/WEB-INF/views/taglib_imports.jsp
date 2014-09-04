@@ -15,3 +15,5 @@
 <script src="/resources/bxSlider/jquery.bxslider.js"></script>
 <!-- bxSlider CSS file -->
 <link href="/resources/bxSlider/jquery.bxslider.css" rel="stylesheet" />
+
+<link href="/resources/css/mainCss.css" rel="stylesheet" />

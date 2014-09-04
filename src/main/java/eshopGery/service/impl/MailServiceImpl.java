@@ -2,26 +2,33 @@ package eshopGery.service.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailParseException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.Context;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import eshopGery.model.EmailMessage;
 import eshopGery.service.api.MailService;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,11 +38,12 @@ import eshopGery.service.api.MailService;
 @Service
 public class MailServiceImpl implements MailService {
 
+    private static final String EMAIL_INVITATION_TEMPLATE_NAME = "emailText.ftl";
     @Autowired
     private JavaMailSender mailSender;
 
     @Autowired
-    private TemplateEngine templateEngine;
+    private FreeMarkerConfigurer freeMarkerConfigurer;
 
     @Override
     public void sendEmail(EmailMessage messageDTO) {
@@ -49,56 +57,81 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public void sendInvitation(EmailMessage messageDTO) {
-
-        MimeMessage message = mailSender.createMimeMessage();
-
-        try{
-            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-
-            helper.setFrom(messageDTO.getFrom());
-            helper.setTo(messageDTO.getTo());
-            helper.setSubject(messageDTO.getSubject());
-
-
-            for (File file : messageDTO.getFiles()) {
-//                helper.addAttachment(file.getName(), file);
-//                String type = Files.probeContentType(file.toPath());
-                helper.addInline(file.getName(), file);
-            }
-
-            helper.setText(messageDTO.getMessage(), true);
-
-        }catch (MessagingException e) {
-            throw new MailParseException(e);
-        }
+    public void sendInvitation(MimeMessage message) {
         mailSender.send(message);
     }
 
     @Override
-    public EmailMessage prepareInvitation(String emailAddressTo) throws IOException {
+    public MimeMessage prepareInvitation(String emailAddressTo, ServletContext servletContext) throws IOException {
+        EmailMessage messageDTO = createEmailMessageDTO(emailAddressTo, servletContext);
+
+        MimeMessage message = mailSender.createMimeMessage();
+        try {
+            buildHtmlMessageContent(message, messageDTO);
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(messageDTO.getTo()));
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        return message;
+
+    }
+
+    private void buildHtmlMessageContent(MimeMessage message, EmailMessage messageDTO) throws MessagingException, IOException {
+        MimeMultipart content = new MimeMultipart("related");
+        
+        MimeBodyPart textPart = new MimeBodyPart();
+        textPart.setText(messageDTO.getMessage(), "UTF-8", "html");
+        content.addBodyPart(textPart);
+
+        // Image part
+		for (File image : messageDTO.getFiles()) {
+            MimeBodyPart imagePart = new MimeBodyPart();
+            imagePart.attachFile(image);
+            imagePart.setContentID("<" + image.getName() + ">");
+            imagePart.setDisposition(MimeBodyPart.INLINE);
+            content.addBodyPart(imagePart);
+		}
+
+        message.setContent(content);
+        message.setSubject(messageDTO.getSubject());
+    }
+
+    private EmailMessage createEmailMessageDTO(String emailAddressTo, ServletContext servletContext) {
         EmailMessage message = new EmailMessage();
 
         message.setTo(emailAddressTo);
-        message.setFrom("l.rezner@gmail.com");
         message.setSubject("Pozvánka");
 
         String[] attachmentNames = {"photo1.png", "photo2.jpg", "photo3.jpg", "photo4.jpg", "logo.png"};
-        String basicPath = "/other/invitation_email/";
-        final Context ctx = new Context(Locale.getDefault());
+        String basicPath = servletContext.getRealPath("resources")+"/other/invitation_email/";
         List<File> attachments = new ArrayList<File>();
+        Map<String, String> dataTemplate = new HashMap<String, String>();
         for (String attachmentName : attachmentNames) {
-            URL fileUrl = getClass().getClassLoader().getResource(basicPath + attachmentName);
-            assert fileUrl != null;
-            File f = new File(fileUrl.getFile());
-
-            ctx.setVariable(FilenameUtils.getBaseName(f.getName()), f.getName());
+            File f = new File(basicPath+ attachmentName);
             attachments.add(f);
-		}
+            String baseName = FilenameUtils.getBaseName(f.getName());
+
+            dataTemplate.put(baseName, f.getName());
+        }
         message.setFiles(attachments);
 
-        final String htmlContent = templateEngine.process("emailText.htm", ctx);
+        String htmlContent = processTemplate(dataTemplate);
         message.setMessage(htmlContent);
         return message;
+    }
+
+    private String processTemplate(Map<String, String> dataTemplate) {
+        Configuration cfg = freeMarkerConfigurer.getConfiguration();
+        Writer out = new StringWriter();
+        try {
+            Template template = cfg.getTemplate(EMAIL_INVITATION_TEMPLATE_NAME);
+            template.process(dataTemplate, out);
+            out.flush();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return out.toString();
     }
 }

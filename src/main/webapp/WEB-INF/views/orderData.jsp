@@ -7,11 +7,9 @@
 <head>
     <meta http-equiv="Content-Language" content="cs">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body style="background-color: #F9F9F6">
-<script src="/resources/js/bootstrap.min.js"></script>
 <jsp:include page="menu.jsp"/>
 <p align="center"><font face="Times New Roman" style="font-size: 13pt"><b><font color="#07A9C3">&nbsp;
     NÁKUPNÍ KOŠÍK - DORUČOVACÍ A PLATEBNÍ ÚDAJE </font></b></font></p>

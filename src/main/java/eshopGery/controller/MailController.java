@@ -2,6 +2,9 @@ package eshopGery.controller;
 
 import java.io.IOException;
 
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,12 +21,12 @@ public class MailController {
     @Autowired
     private MailService service;
 
-    @RequestMapping(value = "/sendEmail")
-    public ModelAndView sendEmail(@RequestParam("emailAddress")String emailAddress) {
+    @RequestMapping(value = "/sendInvitation")
+    public ModelAndView sendInvitation(@RequestParam("emailAddress")String emailAddress, HttpSession session) {
         ModelAndView mav = new ModelAndView("redirect:onas");
-        EmailMessage message = null;
+        MimeMessage message = null;
         try {
-            message = service.prepareInvitation(emailAddress);
+            message = service.prepareInvitation(emailAddress, session.getServletContext());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,7 +38,7 @@ public class MailController {
     public ModelAndView sendContactMessage(@ModelAttribute("contactMessage")EmailMessage message) {
         ModelAndView mav = new ModelAndView("redirect:kontakt");
         message.setSubject(message.getTo()+"-"+message.getSubject());
-        message.setTo("m.gerstberger91@gmail.com");
+        message.setTo("l.rezner@gmail.com");
         //TODO ceske znaky
         service.sendEmail(message);
         return mav;

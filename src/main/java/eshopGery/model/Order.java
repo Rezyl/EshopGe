@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,18 +40,26 @@ public class Order {
 	private Boolean paid;
 	// User data
 	@Column
+    @NotBlank
 	private String name;
 	@Column
+    @NotEmpty
 	private String surname;
 	@Column
+    @NotEmpty
 	private String street;
 	@Column
+    @NotEmpty
 	private String city;
 	@Column
+    @NotEmpty
+    @Pattern(regexp="(^$|[0-9]{5})")
 	private String psc;
 	@Column
+    @Email
 	private String email;
 	@Column
+    @Pattern(regexp="(^$|[0-9]{10})")
 	private String mobile;
 	@Column
 	private String notes;

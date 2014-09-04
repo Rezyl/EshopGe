@@ -2,6 +2,9 @@ package eshopGery.service.api;
 
 import java.io.IOException;
 
+import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletContext;
+
 import eshopGery.model.EmailMessage;
 
 /**
@@ -13,7 +16,7 @@ public interface MailService {
 
     public void sendEmail(EmailMessage messageDTO);
 
-    public void sendInvitation(EmailMessage messageDTO);
+    public void sendInvitation(MimeMessage message);
 
-    public EmailMessage prepareInvitation(String emailAddressTo) throws IOException;
+    public MimeMessage prepareInvitation(String emailAddressTo, ServletContext servletContext) throws IOException;
 }

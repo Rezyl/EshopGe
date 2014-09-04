@@ -17,9 +17,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
 @ComponentScan(basePackages= "eshopGery")
@@ -45,10 +44,11 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     private String hibProp1;
 
 	@Bean
-	public ViewResolver getViewResolver(){
+	public ViewResolver viewResolver(){
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
+        resolver.setOrder(1);
 		return resolver;
 	}
 
@@ -101,44 +101,39 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     @Bean(autowire = Autowire.BY_TYPE)
     public org.springframework.mail.javamail.JavaMailSender mailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setProtocol("smtps");
+        mailSender.setPort(465);
         mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
-        mailSender.setUsername("m.gerstberger91@gmail.com");
+        mailSender.setUsername("l.rezner@gmail.com");
         mailSender.setPassword("popelnice07");
 
         Properties properties = new Properties();
-        properties.setProperty("mail.smtp.auth", String.valueOf(true));
-        properties.setProperty("mail.smtp.starttls.enable", String.valueOf(true));
+        properties.setProperty("mail.smtps.auth", String.valueOf(true));
         mailSender.setJavaMailProperties(properties);
         return mailSender;
     }
 
     /**
-     * THYMELEAF: Template Resolver for email templates
+     * FREE Maker TEMPLATES
      */
     @Bean
-    public ClassLoaderTemplateResolver emailTemplateResolver() {
-        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
-        resolver.setPrefix("/WEB-INF/");
-        resolver.setSuffix(".html");
-        resolver.setTemplateMode("HTML5");
-        resolver.setCharacterEncoding("UTF-8");
-        resolver.setOrder(1);
+    public ViewResolver getViewResolver() {
+
+        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setCache(false);
+        resolver.setSuffix(".ftl");
+        resolver.setOrder(2);
         return resolver;
+
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine() {
-        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(emailTemplateResolver());
-        return templateEngine;
+    public FreeMarkerConfigurer getFreemarkerConfig() {
+        FreeMarkerConfigurer result = new FreeMarkerConfigurer();
+        result.setTemplateLoaderPath("WEB-INF/templates/");
+
+        return result;
     }
 
-    @Bean
-    public ThymeleafViewResolver viewResolver() {
-        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-        viewResolver.setTemplateEngine(templateEngine());
-        viewResolver.setCharacterEncoding("UTF-8");
-        return viewResolver;
+
     }
-}

@@ -73,20 +73,20 @@ public class ItemsController {
 		// TODO valid correct file type
 		// if (!file.isEmpty() && file.getContentType().equals(XLS_FORMAT) || file.getContentType().equals(XLSX_FORMAT)) {
 		String imagePath = service.uploadImage(getRootDirToSaveImages(session), file);
+        if (imagePath != null) {
+            message = "Success!";
+            item.setImageFilePath(imagePath);
+        } else {
+            message = "Nahravan spatny soubor";
+        }
         //IMAGE GALLERY
         List<String> imagesForGallery = new ArrayList<String>();
-		for (MultipartFile multipartFile : filesForGallery) {
+        for (MultipartFile multipartFile : filesForGallery) {
             String imageGallery = service.uploadImage(getRootDirToSaveImages(session), multipartFile);
             imagesForGallery.add(imageGallery);
-		}
+        }
         item.setImageForGallery(service.decodeImagesPath(imagesForGallery));
-        if (imagePath != null) {
-			message = "Success!";
 
-			item.setImageFilePath(imagePath);
-        } else {
-			message = "Nahravan spatny soubor";
-		}
 		if (result.hasErrors()) {
 			return new ModelAndView("redirect:saveShoppingItem");
         }

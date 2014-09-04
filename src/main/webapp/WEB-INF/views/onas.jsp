@@ -36,7 +36,7 @@
 
 <p align="center">
     <img border="0" src="/resources/img/pozvatpritele.png" width="130" height="133"></p>
-<form action="sendEmail">
+<form action="sendInvitation">
 <p align="center"><input type="text" name="emailAddress" maxlength="41" size="41" placeholder="email"></p>
 <p align="center"><button type="submit" class="btn btn-info " >Odeslat</button></p>
 </form>

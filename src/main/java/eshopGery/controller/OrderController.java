@@ -13,6 +13,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
@@ -92,8 +93,12 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/completeOrder")
-	public ModelAndView completeOrder(@ModelAttribute(OrderService.ORDER_SESSION_OBJECT) Order order, HttpSession session, SessionStatus status) {
+	public ModelAndView completeOrder(@ModelAttribute(OrderService.ORDER_SESSION_OBJECT) Order order, HttpSession session, SessionStatus status,  BindingResult result) {
 		ModelAndView mav = new ModelAndView("successfulOrder");
+
+        if (result.hasErrors()) {
+            return new ModelAndView("orderData");
+        }
 
         order.setComplete(false);
 		order.setPaid(false);
