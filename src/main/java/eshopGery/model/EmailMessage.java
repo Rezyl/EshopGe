@@ -1,7 +1,9 @@
 package eshopGery.model;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +19,8 @@ public class EmailMessage {
     private String message;
 
     private List<File> files;
+    
+    private Map<String, Object> templateCnx = new HashMap<String, Object>();
 
     public String getFrom() {
         return from;
@@ -64,5 +68,13 @@ public class EmailMessage {
 
     public void setFiles(List<File> files) {
         this.files = files;
+    }
+
+    public Map<String, Object> getTemplateCnx() {
+        return templateCnx;
+    }
+
+    public void addTemplateItem(String key, Object value) {
+        templateCnx.put(key, value);
     }
 }

@@ -2,7 +2,6 @@ package eshopGery.controller;
 
 import java.io.IOException;
 
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +23,11 @@ public class MailController {
     @RequestMapping(value = "/sendInvitation")
     public ModelAndView sendInvitation(@RequestParam("emailAddress")String emailAddress, HttpSession session) {
         ModelAndView mav = new ModelAndView("redirect:onas");
-        MimeMessage message = null;
         try {
-            message = service.prepareInvitation(emailAddress, session.getServletContext());
+            service.sendInvitation(emailAddress, session.getServletContext());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        service.sendInvitation(message);
         return mav;
     }
 

@@ -4,11 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,34 +27,39 @@ public class Order {
 	private TypePayment typeOfPayment;
     @Column
 	private Integer totalPrice;
+    @Transient
+    private Integer priceOfItems;
     @Column
 	private String dateCreate;
 	@Column
 	private Boolean complete;
 	@Column
 	private Boolean paid;
+
+    @Transient
+    private boolean emptyItems = true;
 	// User data
 	@Column
-    @NotBlank
+//    @NotBlank
 	private String name;
 	@Column
-    @NotEmpty
+//    @NotEmpty
 	private String surname;
 	@Column
-    @NotEmpty
+//    @NotEmpty
 	private String street;
 	@Column
-    @NotEmpty
+//    @NotEmpty
 	private String city;
 	@Column
-    @NotEmpty
-    @Pattern(regexp="(^$|[0-9]{5})")
+//    @NotEmpty
+//    @Pattern(regexp="(^$|[0-9]{5})")
 	private String psc;
 	@Column
-    @Email
+//    @Email
 	private String email;
 	@Column
-    @Pattern(regexp="(^$|[0-9]{10})")
+//    @Pattern(regexp="(^$|[0-9]{10})")
 	private String mobile;
 	@Column
 	private String notes;
@@ -193,4 +193,20 @@ public class Order {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+
+    public Integer getPriceOfItems() {
+        return priceOfItems;
+    }
+
+    public void setPriceOfItems(Integer priceOfItems) {
+        this.priceOfItems = priceOfItems;
+    }
+
+    public boolean isEmptyItems() {
+        return emptyItems;
+    }
+
+    public void setEmptyItems(boolean emptyItems) {
+        this.emptyItems = emptyItems;
+    }
 }

@@ -23,6 +23,7 @@ import eshopGery.model.Order;
 import eshopGery.model.ShoppingItem;
 import eshopGery.model.TypePayment;
 import eshopGery.service.api.EshopConstants;
+import eshopGery.service.api.MailService;
 import eshopGery.service.api.OrderService;
 import eshopGery.service.api.ShopItemService;
 
@@ -35,6 +36,9 @@ public class OrderController {
 
 	@Autowired
 	private ShopItemService shoppingItemService;
+
+    @Autowired
+    private MailService mailService;
 
 	@RequestMapping(value = "/orderForm")
 	public ModelAndView showOrderForm(HttpSession session) {
@@ -61,6 +65,7 @@ public class OrderController {
 		if (order == null) {
 			order = new Order();
 		}
+        order.setEmptyItems(false);
 		ShoppingItem item = shoppingItemService.findItemById(itemID);
 		item.setSize(size);
 		orderService.addItemToOrder(order, item);
@@ -73,6 +78,10 @@ public class OrderController {
 		ModelAndView model = new ModelAndView("redirect:orderForm");
 		Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
 		orderService.removeItemFromOrder(order, itemID, size);
+        //change status empty order
+        if (order.getShoppingItems().isEmpty()) {
+            order.setEmptyItems(true);
+        }
 		model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
 		return model;
 	}
@@ -99,6 +108,11 @@ public class OrderController {
         if (result.hasErrors()) {
             return new ModelAndView("orderData");
         }
+        Integer oldPrice = order.getTotalPrice();
+        //set price of items
+        order.setPriceOfItems(oldPrice);
+        //set price of items + payment
+        order.setTotalPrice(oldPrice + order.getTypeOfPayment().getPricePayment());
 
         order.setComplete(false);
 		order.setPaid(false);
@@ -108,9 +122,10 @@ public class OrderController {
 		order.setDateCreate(parseDateTime);
 		order.setShoppingItemCodes(orderService.encodeShoppingItem(order.getShoppingItems()));
 		orderService.createOrder(order);
+        //send email recapitulation
+        mailService.sendRecapitulation(order, session.getServletContext());
         status.setComplete();
 		session.removeAttribute(OrderService.ORDER_SESSION_OBJECT);
-		// TODO send email
 		return mav;
 
 	}
