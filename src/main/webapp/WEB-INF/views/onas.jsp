@@ -49,7 +49,7 @@
     Tel.: 777 279 448 | Email:
     <a href="mailto:čpníchve@mail.com" style="text-decoration: none">
         <font color="#000000">čpníchve@mail.com</font></a><br>
-    <font color="#000000">  <a target="_top" href="terms">Obchodní podmínky</a>  </font></p>
+    <a target="_top" href="terms"> <font color="#000000">Obchodní podmínky</a>  </font></p>
 <jsp:include page="socialnisite.jsp"/>
 </body>
 

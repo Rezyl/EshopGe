@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
 </head>
 
-<body style="background-color: #F9F9F6">
+<body style="background-color: #F9F9F6" style="overflow: scroll">
 <jsp:include page="menu.jsp"/>
 <p align="center"><font face="Times New Roman" style="font-size: 13pt"><b><font color="#07A9C3">&nbsp;
     NÁKUPNÍ KOŠÍK - DORUČOVACÍ A PLATEBNÍ ÚDAJE </font></b></font></p>

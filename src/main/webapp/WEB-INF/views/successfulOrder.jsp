@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Language" content="cs">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
 </head>
-<body bgcolor="#F9F9F6">
+<body bgcolor="#F9F9F6" style="overflow: scroll">
 <jsp:include page="menu.jsp"/>
 <div align="center">
     <p align="center"><font color="#07A9C3" face="Times New Roman" style="font-size: 13pt">
