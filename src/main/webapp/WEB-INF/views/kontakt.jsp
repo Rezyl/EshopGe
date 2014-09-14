@@ -33,6 +33,7 @@
 
 	            <span>
                     <input type="text" class="form-control" name="to" id="to" placeholder="Jméno">
+                    <form:errors path="to" cssClass="errorMessage"/>
                 </span>
             </td>
             <td class="paramvalue" width="532" height="21" align="justify">
@@ -47,6 +48,7 @@
                 <p align="left">
             	<span>
                     <input type="email" class="form-control" name="from" id="from" placeholder="Email">
+                <form:errors path="from" cssClass="errorMessage"/>
                 </span>
             </td>
             <td class="paramvalue" width="532" height="21" align="justify">

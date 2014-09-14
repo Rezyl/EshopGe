@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * Created with IntelliJ IDEA.
  * User: lukas
@@ -12,11 +15,16 @@ import java.util.Map;
  */
 public class EmailMessage {
 
-    private String from;
+	@Email
+	@NotBlank
     private String to;
-    private String hiddenCopy;
+	@NotBlank
+	private String from;
+	private String hiddenCopy;
     private String subject;
-    private String message;
+
+    @NotBlank
+	private String message;
 
     private List<File> files;
     

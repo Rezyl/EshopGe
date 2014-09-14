@@ -7,17 +7,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import eshopGery.model.Order;
 import eshopGery.model.ShoppingItem;
@@ -87,10 +90,16 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/continueToUserData")
-	public ModelAndView showAddUserDataForm(HttpSession session) {
+	public ModelAndView showAddUserDataForm(Model m, HttpSession session) {
+
+		// if model contains validations error then write on new model
+		if (m.asMap().containsKey("result")) {
+			m.addAttribute("org.springframework.validation.BindingResult.OrderObj", m.asMap().get("result"));
+		}
 
         ModelAndView model = new ModelAndView("orderData");
-        Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
+		model.addAllObjects(m.asMap());
+		Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
 
 		Map<TypePayment, String> typePaymentList = new HashMap<TypePayment, String>();
 		for (TypePayment typePayment : TypePayment.values()) {
@@ -101,14 +110,16 @@ public class OrderController {
 		return model;
 	}
 
-	@RequestMapping(value = "/completeOrder")
-	public ModelAndView completeOrder(@ModelAttribute(OrderService.ORDER_SESSION_OBJECT) Order order, HttpSession session, SessionStatus status,  BindingResult result) {
-		ModelAndView mav = new ModelAndView("successfulOrder");
+	// @ModelAttribute(OrderService.ORDER_SESSION_OBJECT)
+	@RequestMapping(value = "/completeOrder", method = RequestMethod.POST)
+	public String completeOrder(@ModelAttribute(OrderService.ORDER_SESSION_OBJECT) @Valid Order order, BindingResult result,
+			RedirectAttributes redirectAttributes, HttpSession session, SessionStatus status) {
 
-        if (result.hasErrors()) {
-            return new ModelAndView("orderData");
-        }
-        Integer oldPrice = order.getTotalPrice();
+		if (result.hasErrors()) {
+			redirectAttributes.addFlashAttribute("result", result);
+			return "redirect:continueToUserData";
+		}
+		Integer oldPrice = order.getTotalPrice();
         //set price of items
         order.setPriceOfItems(oldPrice);
         //set price of items + payment
@@ -126,7 +137,7 @@ public class OrderController {
         mailService.sendRecapitulation(order, session.getServletContext());
         status.setComplete();
 		session.removeAttribute(OrderService.ORDER_SESSION_OBJECT);
-		return mav;
+		return "successfulOrder";
 
 	}
 

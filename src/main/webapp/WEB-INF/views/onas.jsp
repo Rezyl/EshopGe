@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@include file="taglib_imports.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,8 +38,10 @@
 <p align="center">
     <img border="0" src="/resources/img/pozvatpritele.png" width="130" height="133"></p>
 <form action="sendInvitation">
-<p align="center"><input type="text" name="emailAddress" maxlength="41" size="41" placeholder="email"></p>
-<p align="center"><button type="submit" class="btn btn-info " >Odeslat</button></p>
+    <p align="center"><input type="email" name="emailAddress" maxlength="41" size="41" placeholder="email">
+        <span class="errorMessage"><c:out value="${validationError}"/></span></p>
+
+    <p align="center"><button type="submit" class="btn btn-info " >Odeslat</button></p>
 </form>
 <p align="center">&nbsp;</p>
 

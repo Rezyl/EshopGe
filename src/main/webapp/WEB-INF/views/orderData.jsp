@@ -16,8 +16,8 @@
 <br>
 
 <div align="center">
-    <form:form modelAttribute="OrderObj" action="completeOrder">
-        <table>
+    <form:form modelAttribute="OrderObj" action="completeOrder" method="post">
+    <table>
             <tr><td width="160"><label for="name">Jméno:</label></td>
 
                 <td width="220">       <form:input path="name" id="name" cssClass="input_field"/>
