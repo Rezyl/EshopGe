@@ -11,16 +11,17 @@
         <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
             <div id="ShoppingItem" style="float: left; width: 30%; align-content: center">
                 <a href="showGallery?itemId=${item.itemId}" data-toggle="modal" data-target="#myModal">
-                <img style="display: block" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
-                     width="214" height="233"></a>
+                    <img style="display: block" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
+                         width="214" height="233"></a>
                 <span style="display: block" id="name"><c:out value="${item.name}"/></span>
+                <span style="display: block" id="description"><c:out value="${item.description}"/></span>
 
                 <span style="display: block" id="price"><c:out value="${item.price} Kč"/></span>
 
                 <div>
                     <form action="addItemsToOrder" method="get">
                         <select name="size">
-                            <c:forEach var="s" items="${sizeList}">
+                            <c:forEach var="s" items="${item.getAvailableSizesAsList()}">
                                 <option value="${s}">${s}</option>
                             </c:forEach>
                         </select>
@@ -43,4 +44,3 @@
         <span>Nenalezeno žádné zboží.</span>
     </c:if>
 </div>
-

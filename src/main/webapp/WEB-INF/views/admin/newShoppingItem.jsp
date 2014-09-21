@@ -23,24 +23,24 @@
     <div class="col_400 float_l">
 
         <form:form method="POST" modelAttribute="shoppingItem" action="saveShoppingItem" enctype='multipart/form-data'>
-            <label for="file">Obrázek položky</label>
+            <label for="file">Obrázek položky:</label>
             <input type="file" name="file" id="file"/>
             <br>
             <br>
 
-            <label for="filesForGallery">Obrázky pro galerii</label>
+            <label for="filesForGallery">Obrázky pro galerii:</label>
             <input type="file" name="filesForGallery" id="filesForGallery" multiple/>
             <br>
             <br>
 
-            <label for="name">Název položky</label>
+            <label for="name">Název položky:</label>
             <form:input path="name" id="name" cssClass="input_field"/>
             <form:errors path="name" cssClass="errorMessage"/>
             <br>
             <br>
-            <label for="info">Popisek položky</label>
-            form:input path="info" id="info" cssClass="input_field"/>
-            NEFUNGUJE :(
+            <label for="description">Popisek položky:</label>
+            <form:textarea path="description" id="description" cssClass="input_field"/>
+            <form:errors path="description" cssClass="errorMessage"/>
             <br>
             <br>
 
@@ -58,11 +58,11 @@
             <form:input path="quantity" id="quantity" cssClass="input_field"/>
             <br>
             <br>
-            Velikost:
-            <br>
-            34-41<input type="checkbox" checked name="35-40" value="ano">
-            <br>
-            34-39, 39-46, 35-42, 34-41, 34-42
+
+            <div>
+                <label for="sizes">Velikosti:</label>
+                <form:checkboxes items="${sizesValues}" id="sizes" path="availableSizes"/>
+            </div>
             <br>
 
             <div class="cleaner_h10"></div>

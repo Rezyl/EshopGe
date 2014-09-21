@@ -1,3 +1,5 @@
+<%@ page import="eshopGery.model.Order" %>
+<%@ page import="eshopGery.model.TypePayment" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,6 +9,15 @@
 <head>
     <meta http-equiv="Content-Language" content="cs">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+    <%!
+        public String getTotalPrice(HttpServletRequest request) {
+            String typePaymentName = request.getParameter("typeOfPaymentSel");
+            TypePayment typePayment = TypePayment.valueOf(typePaymentName);
+            Order order = (Order) request.getSession().getAttribute("OrderObj");
+            Integer priceOfItem = order.getPriceOfItems();
+            return String.valueOf(priceOfItem + typePayment.getPricePayment());
+        }
+    %>
 </head>
 
 <body style="background-color: #F9F9F6" style="overflow: scroll">
@@ -20,8 +31,9 @@
     <table>
             <tr><td width="160"><label for="name">Jméno:</label></td>
 
-                <td width="220">       <form:input path="name" id="name" cssClass="input_field"/>
-                <form:errors path="name" cssClass="errorMessage"/></td>
+                <td width="220">
+                    <form:input path="name" id="name" cssClass="input_field"/>
+                    <form:errors path="name" cssClass="errorMessage"/></td>
 
                 <td width="80"><label for="surname">Přijmení:</label></td>
 
@@ -52,28 +64,40 @@
                 <td> <form:input path="mobile" id="mobile" cssClass="input_field"/>
                 <form:errors path="mobile" cssClass="errorMessage"/></td>
             </tr>
-            <tr><td><label for="typeOfPayment">Typ platby a dopravy:</label></td>
-                <td> <form:select path="typeOfPayment" items="${typePaymentList}" id="typeOfPayment" cssClass="input_field"/></td>
-                <td>&nbsp;</td><td>&nbsp;</td>
-            </tr>
-            <tr><td><label for="notes">Poznámky:</label></td>
+        <tr>
+            <td><label for="typeOfPaymentSel">Typ platby a dopravy:</label></td>
+            <td>
+                <form:select path="typeOfPayment" items="${typePaymentList}" id="typeOfPaymentSel"
+                             cssClass="input_field"/>
+                    <%--<select name="payment" id="selectPayment" onchange="submitForm(this);">
+                        <c:forEach items="${typePaymentList}" var="item">
+                            <option value="${item}"><c:out value="${item.value}"/></option>
+                        </c:forEach>
+                    </select>--%>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+            <%--<input id="typeOfPayment" name="typeOfPayment" type="hidden" value="${select.typeOfPaymentSel.val()}">--%>
+
+        <tr><td><label for="notes">Poznámky:</label></td>
                 <td>   <form:input path="notes" id="notes" cssClass="input_field"/></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr><td>Souhlasím s <a target="_blank" href="terms">podmínkami</a></td>
-                <td><input type="checkbox" checked name="checkbox" value="ano"></td>
+                <td><form:checkbox path="acceptTerms"/>
+                    <form:errors path="acceptTerms" cssClass="errorMessage"/></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td></tr>
         <br>
-
-
-
         <div class="cleaner_h10"></div>
         </table>
         <br>
         <br>
-        Cena celkem(přednastavena cena za doporučenou zásilku(+49Kč), v případě změny dopravy na dobírku měnit samozřejmě i celkovou cenu
+
+        <p align="center"><b><font size="5">Cena celkem s dopravou: <% out.println(getTotalPrice(request));%>
+            Kč&nbsp; </font></b></p>
         <br>
 
         <br>

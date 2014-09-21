@@ -1,7 +1,7 @@
 package eshopGery.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,8 +49,8 @@ public class OrderController {
 		Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
 		if (order != null) {
 			model.addObject("SEARCH_ITEM_RESULTS_KEY", order.getShoppingItems());
-			int price = orderService.calculateTotalPrice(order.getShoppingItems());
-			order.setTotalPrice(price);
+			int price = orderService.calculatePriceOfItems(order.getShoppingItems());
+			order.setPriceOfItems(price);
 			model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
 		} else {
 			model.addObject("SEARCH_ITEM_RESULTS_KEY", new ArrayList<String>());
@@ -101,16 +101,26 @@ public class OrderController {
 		model.addAllObjects(m.asMap());
 		Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
 
-		Map<TypePayment, String> typePaymentList = new HashMap<TypePayment, String>();
+		Map<TypePayment, String> typePaymentList = new LinkedHashMap<TypePayment, String>();
 		for (TypePayment typePayment : TypePayment.values()) {
 			typePaymentList.put(typePayment, typePayment.getDisplayName());
 		}
+		// set total price
+		order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), TypePayment.values()[0]));
 		model.addObject("typePaymentList", typePaymentList);
 		model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
 		return model;
 	}
 
-	// @ModelAttribute(OrderService.ORDER_SESSION_OBJECT)
+	@RequestMapping(value = "/changeTypeOfPayment", method = RequestMethod.GET)
+	public ModelAndView changeTypeOfPayment(ModelAndView mav, @RequestParam("typeOfPayment") String typeOfPayment, HttpSession session) {
+		Order order = (Order) mav.getModel().get(OrderService.ORDER_SESSION_OBJECT);
+		TypePayment payment = TypePayment.valueOf(typeOfPayment);
+		order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), payment));
+		mav.addObject(OrderService.ORDER_SESSION_OBJECT, order);
+		return mav;
+	}
+
 	@RequestMapping(value = "/completeOrder", method = RequestMethod.POST)
 	public String completeOrder(@ModelAttribute(OrderService.ORDER_SESSION_OBJECT) @Valid Order order, BindingResult result,
 			RedirectAttributes redirectAttributes, HttpSession session, SessionStatus status) {
@@ -119,11 +129,7 @@ public class OrderController {
 			redirectAttributes.addFlashAttribute("result", result);
 			return "redirect:continueToUserData";
 		}
-		Integer oldPrice = order.getTotalPrice();
-        //set price of items
-        order.setPriceOfItems(oldPrice);
-        //set price of items + payment
-        order.setTotalPrice(oldPrice + order.getTypeOfPayment().getPricePayment());
+		// TODO check if set total price
 
         order.setComplete(false);
 		order.setPaid(false);

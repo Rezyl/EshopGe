@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.*;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
@@ -69,6 +70,10 @@ public class Order {
 	private String mobile;
 	@Column
 	private String notes;
+
+	@Transient
+	@AssertTrue(message = "Musíte nejprve souhlasit s právami")
+	private boolean acceptTerms;
 
 	public Long getOrderID() {
         return orderID;
@@ -214,5 +219,13 @@ public class Order {
 
     public void setEmptyItems(boolean emptyItems) {
         this.emptyItems = emptyItems;
+	}
+
+	public boolean isAcceptTerms() {
+		return acceptTerms;
+	}
+
+	public void setAcceptTerms(boolean acceptTerms) {
+		this.acceptTerms = acceptTerms;
     }
 }

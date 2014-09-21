@@ -22,22 +22,23 @@
             </thead>
             <tbody>
             <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
-                    <td width="200"><img src="${item.key.imageFilePath}" alt="${item.key.name}" width="214" height="233"/></td>
-                    <td width="200"><c:out value="${item.key.size}"></c:out></td>
-                    <td width="200"><c:out value="${item.value}"></c:out></td>
-                    <td width="200"><c:out value="${item.key.price}"></c:out></td>
-                    <td>
-                        <form id="formid" action="deleteItemFromOrder">
-                            <input type="hidden" name="itemID" value="${item.key.itemId}"/>
-                            <input type="hidden" name="size" value="${item.key.size}"/>
-                            &nbsp;<a href="#" onclick="document.getElementById('formid').submit()">Smazat</a>
-                        </form>
-                    </td>
+                <td width="200"><img src="${item.key.imageFilePath}" alt="${item.key.name}" width="214" height="233"/>
+                </td>
+                <td width="200"><c:out value="${item.key.size}"></c:out></td>
+                <td width="200"><c:out value="${item.value}"></c:out></td>
+                <td width="200"><c:out value="${item.key.price}"></c:out></td>
+                <td>
+                    <form id="formid" action="deleteItemFromOrder">
+                        <input type="hidden" name="itemID" value="${item.key.itemId}"/>
+                        <input type="hidden" name="size" value="${item.key.size}"/>
+                        &nbsp;<a href="#" onclick="document.getElementById('formid').submit()">Smazat</a>
+                    </form>
+                </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        <p align="center"><b><font size="5">Cena celkem: ${OrderObj.totalPrice}Kč&nbsp; </font></b></p>
+        <p align="center"><b><font size="5">Cena celkem: ${OrderObj.priceOfItems}Kč&nbsp; </font></b></p>
 
         <p align="center"><font face="Arial Unicode MS" color="#FFFFFF" size="3">
             <button class="btn btn-info " onclick="location.href='continueToUserData'">Další</button>

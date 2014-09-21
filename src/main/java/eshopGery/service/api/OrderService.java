@@ -5,6 +5,7 @@ import java.util.Map;
 
 import eshopGery.model.Order;
 import eshopGery.model.ShoppingItem;
+import eshopGery.model.TypePayment;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,14 +22,13 @@ public interface OrderService {
 
 	public String encodeShoppingItem(Map<ShoppingItem, Integer> items);
 
-    public int calculateTotalPrice(Map<ShoppingItem, Integer> items);
+	public int calculatePriceOfItems(Map<ShoppingItem, Integer> items);
+
+	public int calculateTotalPrice(Map<ShoppingItem, Integer> items, TypePayment typePayment);
 
 	public Order findItemById(Long id);
 
 	public void createOrder(Order order);
 
 	public List<Order> getAllItems();
-
-	public void sendEmail(String email, Order order);
-
 }

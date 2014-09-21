@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import eshopGery.dao.OrderDao;
 import eshopGery.model.Order;
 import eshopGery.model.ShoppingItem;
+import eshopGery.model.TypePayment;
 import eshopGery.service.api.OrderService;
 
 /**
@@ -35,33 +36,33 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-    public void removeItemFromOrder(Order order, Long itemID, String size) {
+	public void removeItemFromOrder(Order order, Long itemID, String size) {
 		Map<ShoppingItem, Integer> map = order.getShoppingItems();
-        List<ShoppingItem> candidateForRemove = findItemsFromOrder(order, itemID);
+		List<ShoppingItem> candidateForRemove = findItemsFromOrder(order, itemID);
 
-        for (ShoppingItem shoppingItem : candidateForRemove) {
-            if (size.equals(shoppingItem.getSize())) {
-                if (map.get(shoppingItem) > 1) {
-                    Integer oldQuantity = map.get(shoppingItem);
-                    map.put(shoppingItem, oldQuantity - 1);
-                } else {
-                    map.remove(shoppingItem);
-                }
-            }
-        }
+		for (ShoppingItem shoppingItem : candidateForRemove) {
+			if (size.equals(shoppingItem.getSize())) {
+				if (map.get(shoppingItem) > 1) {
+					Integer oldQuantity = map.get(shoppingItem);
+					map.put(shoppingItem, oldQuantity - 1);
+				} else {
+					map.remove(shoppingItem);
+				}
+			}
+		}
 	}
 
-    private List<ShoppingItem> findItemsFromOrder(Order order, Long itemID) {
-        List<ShoppingItem> result = new ArrayList<ShoppingItem>();
-        for (ShoppingItem shoppingItem : order.getShoppingItems().keySet()) {
-            if (itemID.equals(shoppingItem.getItemId())) {
-                result.add(shoppingItem);
-            }
-        }
-        return result;
-    }
+	private List<ShoppingItem> findItemsFromOrder(Order order, Long itemID) {
+		List<ShoppingItem> result = new ArrayList<ShoppingItem>();
+		for (ShoppingItem shoppingItem : order.getShoppingItems().keySet()) {
+			if (itemID.equals(shoppingItem.getItemId())) {
+				result.add(shoppingItem);
+			}
+		}
+		return result;
+	}
 
-    @Override
+	@Override
 	public Order findItemById(Long id) {
 		return orderDao.getById(id);
 	}
@@ -77,11 +78,6 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void sendEmail(String email, Order order) {
-		// TODO implement sending emails
-	}
-
-	@Override
 	public String encodeShoppingItem(Map<ShoppingItem, Integer> items) {
 		StringBuilder result = new StringBuilder();
 		for (Map.Entry<ShoppingItem, Integer> entry : items.entrySet()) {
@@ -92,14 +88,19 @@ public class OrderServiceImpl implements OrderService {
 		return result.toString();
 	}
 
-    @Override
-    public int calculateTotalPrice(Map<ShoppingItem, Integer> items) {
-        int price = 0;
-        for (Map.Entry<ShoppingItem, Integer> shoppingItemIntegerEntry : items.entrySet()) {
-            ShoppingItem shoppingItem = shoppingItemIntegerEntry.getKey();
-            int quantity = shoppingItemIntegerEntry.getValue();
-            price += shoppingItem.getPrice()*quantity;
-        }
-        return price;
-    }
+	@Override
+	public int calculatePriceOfItems(Map<ShoppingItem, Integer> items) {
+		int price = 0;
+		for (Map.Entry<ShoppingItem, Integer> shoppingItemIntegerEntry : items.entrySet()) {
+			ShoppingItem shoppingItem = shoppingItemIntegerEntry.getKey();
+			int quantity = shoppingItemIntegerEntry.getValue();
+			price += shoppingItem.getPrice() * quantity;
+		}
+		return price;
+	}
+
+	@Override
+	public int calculateTotalPrice(Map<ShoppingItem, Integer> items, TypePayment typePayment) {
+		return calculatePriceOfItems(items) + typePayment.getPricePayment();
+	}
 }
