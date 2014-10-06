@@ -1,5 +1,3 @@
-<%@ page import="eshopGery.model.Order" %>
-<%@ page import="eshopGery.model.TypePayment" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,15 +7,13 @@
 <head>
     <meta http-equiv="Content-Language" content="cs">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-    <%!
-        public String getTotalPrice(HttpServletRequest request) {
-            String typePaymentName = request.getParameter("typeOfPaymentSel");
-            TypePayment typePayment = TypePayment.valueOf(typePaymentName);
-            Order order = (Order) request.getSession().getAttribute("OrderObj");
-            Integer priceOfItem = order.getPriceOfItems();
-            return String.valueOf(priceOfItem + typePayment.getPricePayment());
+
+    <script type="text/javascript">
+        function changePrice() {
+            document.getElementById('submitOrderNow').value = 'false';
+            document.getElementById('submitForm').click();
         }
-    %>
+    </script>
 </head>
 
 <body style="background-color: #F9F9F6" style="overflow: scroll">
@@ -27,7 +23,7 @@
 <br>
 
 <div align="center">
-    <form:form modelAttribute="OrderObj" action="completeOrder" method="post">
+    <form:form modelAttribute="OrderObj" action="completeOrder" method="post" id="submitOrder">
     <table>
             <tr><td width="160"><label for="name">Jméno:</label></td>
 
@@ -65,20 +61,16 @@
                 <form:errors path="mobile" cssClass="errorMessage"/></td>
             </tr>
         <tr>
-            <td><label for="typeOfPaymentSel">Typ platby a dopravy:</label></td>
+            <td><label for="typeOfPayment">Typ platby a dopravy:</label></td>
             <td>
-                <form:select path="typeOfPayment" items="${typePaymentList}" id="typeOfPaymentSel"
-                             cssClass="input_field"/>
-                    <%--<select name="payment" id="selectPayment" onchange="submitForm(this);">
-                        <c:forEach items="${typePaymentList}" var="item">
-                            <option value="${item}"><c:out value="${item.value}"/></option>
-                        </c:forEach>
-                    </select>--%>
+                <form:select path="typeOfPayment" items="${typePaymentList}" id="typeOfPayment" cssClass="input_field"
+                             onchange="changePrice()"/>
+                    <%--this value tell if only change type of payment or submit order--%>
+                <input type="hidden" id="submitOrderNow" name="submitOrderNow" value="true"/>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
-            <%--<input id="typeOfPayment" name="typeOfPayment" type="hidden" value="${select.typeOfPaymentSel.val()}">--%>
 
         <tr><td><label for="notes">Poznámky:</label></td>
                 <td>   <form:input path="notes" id="notes" cssClass="input_field"/></td>
@@ -96,12 +88,11 @@
         <br>
         <br>
 
-        <p align="center"><b><font size="5">Cena celkem s dopravou: <% out.println(getTotalPrice(request));%>
-            Kč&nbsp; </font></b></p>
+        <p align="center"><b><font size="5">Cena celkem s dopravou: ${OrderObj.totalPrice} Kč&nbsp; </font></b></p>
         <br>
 
         <br>
-        <button class="btn btn-info" type= "submit">Odeslat objednávku</button>
+        <button class="btn btn-info" type="submit" id="submitForm">Odeslat objednávku</button>
     </form:form>
     <br>
 

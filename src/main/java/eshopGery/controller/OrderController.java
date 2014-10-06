@@ -99,38 +99,49 @@ public class OrderController {
 
         ModelAndView model = new ModelAndView("orderData");
 		model.addAllObjects(m.asMap());
-		Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
 
 		Map<TypePayment, String> typePaymentList = new LinkedHashMap<TypePayment, String>();
 		for (TypePayment typePayment : TypePayment.values()) {
 			typePaymentList.put(typePayment, typePayment.getDisplayName());
 		}
-		// set total price
-		order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), TypePayment.values()[0]));
 		model.addObject("typePaymentList", typePaymentList);
-		model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
-		return model;
-	}
 
-	@RequestMapping(value = "/changeTypeOfPayment", method = RequestMethod.GET)
-	public ModelAndView changeTypeOfPayment(ModelAndView mav, @RequestParam("typeOfPayment") String typeOfPayment, HttpSession session) {
-		Order order = (Order) mav.getModel().get(OrderService.ORDER_SESSION_OBJECT);
-		TypePayment payment = TypePayment.valueOf(typeOfPayment);
-		order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), payment));
-		mav.addObject(OrderService.ORDER_SESSION_OBJECT, order);
-		return mav;
+		if (!model.getModel().containsKey(OrderService.ORDER_SESSION_OBJECT)) {
+			// set total price
+			Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
+			order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), TypePayment.values()[0]));
+			model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
+		}
+		return model;
 	}
 
 	@RequestMapping(value = "/completeOrder", method = RequestMethod.POST)
 	public String completeOrder(@ModelAttribute(OrderService.ORDER_SESSION_OBJECT) @Valid Order order, BindingResult result,
 			RedirectAttributes redirectAttributes, HttpSession session, SessionStatus status) {
+		boolean submit = order.isSubmitOrderNow();
 
-		if (result.hasErrors()) {
+		// if form contains errors -> add to redirect
+		if (submit && result.hasErrors()) {
 			redirectAttributes.addFlashAttribute("result", result);
 			return "redirect:continueToUserData";
 		}
-		// TODO check if set total price
 
+		if (submit) {
+			// if form is complete then save order and send email
+			reallyCompleteOrder(order, session, status);
+			return "successfulOrder";
+		} else {
+			order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), order.getTypeOfPayment()));
+			redirectAttributes.addFlashAttribute(OrderService.ORDER_SESSION_OBJECT, order);
+			return "redirect:continueToUserData";
+		}
+
+	}
+
+	/**
+	 * Complete and save order from session to database and send email about the order.
+	 */
+	private void reallyCompleteOrder(Order order, HttpSession session, SessionStatus status) {
         order.setComplete(false);
 		order.setPaid(false);
 		DateTime now = DateTime.now();
@@ -143,14 +154,11 @@ public class OrderController {
         mailService.sendRecapitulation(order, session.getServletContext());
         status.setComplete();
 		session.removeAttribute(OrderService.ORDER_SESSION_OBJECT);
-		return "successfulOrder";
-
 	}
 
     /**
      * ADMIN PART
      */
-
 	@RequestMapping(EshopConstants.ADMIN_PART_PREFIX + "adminPartOrders")
 	public ModelAndView getAllItems(WebRequest webRequest) {
 		ModelAndView mav = new ModelAndView("/admin/administration");

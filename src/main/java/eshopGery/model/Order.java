@@ -72,8 +72,14 @@ public class Order {
 	private String notes;
 
 	@Transient
-	@AssertTrue(message = "Musíte nejprve souhlasit s právami")
+	@AssertTrue(message = "Musíte nejprve souhlasit s podmínkami")
 	private boolean acceptTerms;
+
+	@Transient
+	/**
+	 * Helper attribute. Use for help change type of payment.
+	 */
+	private boolean submitOrderNow;
 
 	public Long getOrderID() {
         return orderID;
@@ -228,4 +234,12 @@ public class Order {
 	public void setAcceptTerms(boolean acceptTerms) {
 		this.acceptTerms = acceptTerms;
     }
+
+	public boolean isSubmitOrderNow() {
+		return submitOrderNow;
+	}
+
+	public void setSubmitOrderNow(boolean submitOrderNow) {
+		this.submitOrderNow = submitOrderNow;
+	}
 }
