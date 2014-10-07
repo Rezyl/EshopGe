@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Language" content="cs"/>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
 </head>
-<body bgcolor="#F9F9F6">
+<body style="background-color: #F9F9F6; overflow: scroll;">
 <jsp:include page="menu.jsp"/>
     <jsp:include page="obchodleva.jsp"/>
     <jsp:include page="obchodObsah.jsp"/>

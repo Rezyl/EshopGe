@@ -4,14 +4,10 @@
 <html>
 
 <head>
-    <title>TOP ponožky - Bisonsocks.cz</title>
-<body style="overflow: scroll">
     <meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-</head>
-
-<body style="overflow: scroll">
-<body>
+    <title>TOP ponožky - Bisonsocks.cz</title>
+<body style="overflow: scroll; background-color: #F9F9F6">
 
 <jsp:include page="menu.jsp"/>
 <p align="center"><b><font color="#07A9C3">TOP PONOŽKY</font> </b>&nbsp;&nbsp;
@@ -25,5 +21,4 @@
             border="0" src="/resources/img/3.png" width="214" height="233" align="texttop"></p>
 <jsp:include page="socialnisite.jsp"/>
 </body>
-
 </html>

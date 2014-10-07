@@ -9,7 +9,7 @@
     <title>Košík - Bisonsocks.cz</title>
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body bgcolor="#F9F9F6" style="background-color: #F9F9F6">
+<body style="background-color: #F9F9F6; overflow: scroll;">
 <jsp:include page="menu.jsp"/>
 <jsp:include page="kosikzbozi.jsp"/>
 </body>

@@ -11,7 +11,7 @@ public class BasicNavigateController {
 
 	@RequestMapping(value = "/")
 	public ModelAndView test() {
-		return new ModelAndView("index");
+		return new ModelAndView("onas");
 	}
 
 	@RequestMapping(value = "/onas")
