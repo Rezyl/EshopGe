@@ -10,7 +10,7 @@
 <body style="overflow: scroll; background-color: #F9F9F6">
 
 <jsp:include page="menu.jsp"/>
-<p align="center"><b><font color="#07A9C3">TOP PONOŽKY</font> </b>&nbsp;&nbsp;
+<p align="center"><b><font face="Times New Roman" style="font-size: 13pt" color="#07A9C3">TOP PONOŽKY</font> </b>&nbsp;&nbsp;
 </p>
 
 <p align="center">&nbsp;&nbsp;&nbsp;

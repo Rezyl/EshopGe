@@ -31,7 +31,9 @@
     melancholické náladě, naše ponožky vás potěší.</p>
 
 <p align="left">&nbsp;</p>
-
+<p align="center"><img border="0" src="/resources/img/pruh.jpg" width="980" height="200"></p>
+<br>
+<br>
 <p align="center">
     <font color="#07A9C3" face="Times New Roman" style="font-size: 13pt"><b>POZVAT PŘÍTELE</b></font></p>
 
@@ -48,11 +50,13 @@
 <p align="center">&nbsp;</p>
 
 <p align="center"><font face="Arial">Hněvčeves 34, 50315 Nechanice |
-    Provozovatel: Michal Gerstberger | IČO: 12312312<br>
+    Provozovatel: Michal Gerstberger
+    <BR>
+    IČO: 03355543 | DIČ: CZ9112203870<br>
     Tel.: 777 279 448 | Email:
-    <a href="mailto:čpníchve@mail.com" style="text-decoration: none">
-        <font color="#000000">čpníchve@mail.com</font></a><br>
-    <a target="_top" href="terms"> <font color="#000000">Obchodní podmínky</a>  </font></p>
+
+bisonsocks@email.cz<br>
+    <a target="_blank" href="terms"> <font color="#000000">Obchodní podmínky</a>  </font></p>
 <jsp:include page="socialnisite.jsp"/>
 </body>
 
