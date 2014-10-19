@@ -16,7 +16,7 @@
                 <span style="display: block" id="name"><c:out value="${item.name}"/></span>
                 <span style="display: block" id="description"><c:out value="${item.description}"/></span>
 
-                <span style="display: block" id="price"><c:out value="${item.price} Kč"/></span>
+                <span style="display: block" id="price"><c:out value="${item.price} Kč s DPH"/></span>
 
                 <div>
                     <form action="addItemsToOrder" method="get">
