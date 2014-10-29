@@ -8,9 +8,8 @@
 <meta http-equiv="Content-Language" content="cs"/>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
 </head>
-<body style="overflow: scroll">
-<body>
-<jsp:include page="menu.jsp"/>
+<body style="overflow: scroll" bgcolor="#F9F9F6" style="background-color: #F9F9F6">
+
 
 <p align="center"><font color="#07A9C3"><b>OBCHODNÍ PODMÍNKY</b></font></p>
 <p><b><font color="#07A9C3">Doručení</font><br>

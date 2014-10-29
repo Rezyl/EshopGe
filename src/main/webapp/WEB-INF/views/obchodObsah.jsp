@@ -9,10 +9,10 @@
 
     <c:if test="${! empty SEARCH_ITEM_RESULTS_KEY}">
         <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
-            <div id="ShoppingItem" style="float: left; width: 30%; align-content: center">
+          <div id="ShoppingItem" style="float: left; margin: -1px; width: 257px; align-content: center">
                 <a href="showGallery?itemId=${item.itemId}" data-toggle="modal" data-target="#myModal">
-                    <img style="display: block" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
-                         width="214" height="233"></a>
+                    <img style="display: block; margin: 20px" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
+                         width="214" height="428"></a>
                 <span style="display: block" id="name"><c:out value="${item.name}"/></span>
                 <span style="display: block" id="description"><c:out value="${item.description}"/></span>
 
