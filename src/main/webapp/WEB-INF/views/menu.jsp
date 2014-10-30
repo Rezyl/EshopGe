@@ -9,8 +9,8 @@
 <p align="center"><img border="0" src="/resources/img/oddelovac.bmp" width="980" height="4"></p>
 
 <p align="center">
-    <a target="_top" href="showByCategory?category=LONG_SOCKS"><img border="0" src="/resources/img/obchod.png"
-                                                                    width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_top" href="showByCategory?category=ALTERNATIVE"><img border="0" src="/resources/img/obchod.png"
+                                                                     width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     <a target="_top" href="top"><img border="0" src="/resources/img/top.png" width="144" height="31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

@@ -1,9 +1,6 @@
 package eshopGery.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -157,6 +154,7 @@ public class ItemsController {
 		List<ShoppingItem> items = service.getAllByCategory(categoryEnum);
 		mav.addObject("SEARCH_ITEM_RESULTS_KEY", items);
 		mav.addObject("sizeList", SizeOfSock.values());
+		mav.addObject("allCategories", Arrays.asList(Category.values()));
 		return mav;
 	}
 
