@@ -2,7 +2,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <%@include file="taglib_imports.jsp" %>
-<div style="float: left">
     <%--<sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">--%>
     <%--<input type="button" value="Novy Zavodnik" onclick="javascript:go('saveCompetitor.do');" class="submit_btn float_l"/>--%>
     <%--</sec:authorize>--%>
@@ -13,20 +12,20 @@
                 <a href="showGallery?itemId=${item.itemId}" data-toggle="modal" data-target="#myModal">
                     <img style="display: block; margin: 20px" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
                          width="214" height="428"></a>
-                <span style="display: block" id="name"><c:out value="${item.name}"/></span>
-                <span style="display: block" id="description"><c:out value="${item.description}"/></span>
+                <span style="display: block; text-align: center" id="name"><c:out value="${item.name}"/></span>
+                <span style="display: block; text-align: center" id="description"><c:out value="${item.description}"/></span>
 
-                <span style="display: block" id="price"><c:out value="${item.price} Kč s DPH"/></span>
+                <span style="display: block; text-align: center" id="price"><c:out value="${item.price} Kč s DPH"/></span>
 
                 <div>
                     <form action="addItemsToOrder" method="get">
-                        <select name="size">
+                        <select name="size" style="align-content: center">
                             <c:forEach var="s" items="${item.getAvailableSizesAsList()}">
                                 <option value="${s}">${s}</option>
                             </c:forEach>
                         </select>
                         <input name="itemID" type="hidden" value="${item.itemId}"/>
-                        <input type="submit" value="Přidat do košíku"/>
+                        <input type="submit" style="align-content: center" value="Přidat do košíku"/>
                     </form>
                 </div>
             </div>
@@ -43,4 +42,3 @@
     <c:if test="${empty SEARCH_ITEM_RESULTS_KEY}">
         <span>Nenalezeno žádné zboží.</span>
     </c:if>
-</div>

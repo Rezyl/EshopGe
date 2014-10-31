@@ -9,7 +9,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
 </head>
 <body style="background-color: #F9F9F6; overflow: scroll;">
+
+
 <jsp:include page="menu.jsp"/>
+<div style="height: 100%">
     <jsp:include page="obchodleva.jsp"/>
     <jsp:include page="obchodObsah.jsp"/>
 </div>
