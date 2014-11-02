@@ -49,8 +49,11 @@ public class OrderController {
 		Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
 		if (order != null) {
 			model.addObject("SEARCH_ITEM_RESULTS_KEY", order.getShoppingItems());
+			// price of items
 			int price = orderService.calculatePriceOfItems(order.getShoppingItems());
 			order.setPriceOfItems(price);
+			// total price
+			order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), TypePayment.values()[0]));
 			model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
 		} else {
 			model.addObject("SEARCH_ITEM_RESULTS_KEY", new ArrayList<String>());
@@ -106,12 +109,12 @@ public class OrderController {
 		}
 		model.addObject("typePaymentList", typePaymentList);
 
-		if (!model.getModel().containsKey(OrderService.ORDER_SESSION_OBJECT)) {
-			// set total price
-			Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
-			order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), TypePayment.values()[0]));
-			model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
-		}
+		// if (!model.getModel().containsKey(OrderService.ORDER_SESSION_OBJECT)) {
+		// // set total price
+		// Order order = (Order) session.getAttribute(OrderService.ORDER_SESSION_OBJECT);
+		// order.setTotalPrice(orderService.calculateTotalPrice(order.getShoppingItems(), TypePayment.values()[0]));
+		// model.addObject(OrderService.ORDER_SESSION_OBJECT, order);
+		// }
 		return model;
 	}
 
