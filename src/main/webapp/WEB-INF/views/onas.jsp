@@ -9,8 +9,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<jsp:include page="menu.jsp"/>
 <body style="background-color: #F9F9F6">
+<jsp:include page="menu.jsp"/>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
 <p align="center"><font color="#07A9C3" face="Times New Roman" style="font-size: 13pt"><b>„NEJVĚTŠÍ CHYBA, KTEROU V
@@ -31,14 +31,14 @@
     melancholické náladě, naše ponožky vás potěší.</p>
 
 <p align="left">&nbsp;</p>
-<p align="center"><img border="0" src="/resources/img/pruh.jpg" width="980" height="200"></p>
+<p align="center"><img border="0" src="/resources/img/pruh.jpg" width="71.742%" height="31%"></p>
 <br>
 <br>
 <p align="center">
     <font color="#07A9C3" face="Times New Roman" style="font-size: 13pt"><b>POZVAT PŘÍTELE</b></font></p>
 
 <p align="center">
-    <img border="0" src="/resources/img/pozvatpritele.png" width="130" height="133"></p>
+    <img border="0" src="/resources/img/pozvatpritele.png" width="9.5%" height="17.31%"></p>
 <form action="sendInvitation">
     <p align="center"><input type="email" name="emailAddress" maxlength="41" size="41" placeholder="email">
         <span class="errorMessage"><c:out value="${validationError}"/></span></p>

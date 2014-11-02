@@ -14,11 +14,11 @@
 </p>
 
 <p align="center">&nbsp;&nbsp;&nbsp;
-    <img border="0" src="/resources/img/2.png" width="214" height="233" align="texttop"><img border="0"
+    <img border="0" src="/resources/img/2.png" width="15.7%" height="233" align="texttop"><img border="0"
                                                                                              src="/resources/img/1.png"
                                                                                              width="214" height="233"
                                                                                              align="texttop"><img
-            border="0" src="/resources/img/3.png" width="214" height="233" align="texttop"></p>
+            border="0" src="/resources/img/3.png" width="15.7%" height="233" align="texttop"></p>
 <jsp:include page="socialnisite.jsp"/>
 </body>
 </html>

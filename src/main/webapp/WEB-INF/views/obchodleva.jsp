@@ -13,7 +13,7 @@
         <p>
             <font color="#07A9C3">
                 <b>
-                    <a href="${showByCategoryUrl}" style="text-decoration: none">
+                    <a href="${showByCategoryUrl}" style="text-decoration: none; display:block">
                         <font color="#07A9C3"><c:out value="${cat.displayName}"/></font>
                     </a>
                 </b>

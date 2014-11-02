@@ -76,7 +76,7 @@
             </td>
             <td class="paramvalue" width="532" align="justify">
 
-                <img border="0" src="/resources/img/kontaktkladivo.png" width="150" height="114" align="right"></td>
+                <img border="0" src="/resources/img/kontaktkladivo.png" width="74%" height="74%" align="right"></td>
         </tr>
         <tr>
             <td class="paramname" width="213" align="justify" height="246">

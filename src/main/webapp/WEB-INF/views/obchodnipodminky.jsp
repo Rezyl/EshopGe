@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
 </head>
 <body style="overflow: scroll">
-<jsp:include page="menu.jsp"/>
+
 
 <p align="center"><font color="#07A9C3"><b>OBCHODNÍ PODMÍNKY</b></font></p>
 
@@ -123,7 +123,7 @@
     <br>
 
     <br>
-    <img border="0" src="/resources/img/ponozky.png" width="104" height="113">
+    <img border="0" src="/resources/img/ponozky.png" width="7.6%" height="113">
 </center>
 <jsp:include page="socialnisite.jsp"/>
 </body>

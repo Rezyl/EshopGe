@@ -26,7 +26,7 @@
     <br>
 
     <br>
-    <img border="0" src="/resources/img/ponozky.png" width="104" height="113">
+    <img border="0" src="/resources/img/ponozky.png" width="7.6%" height="14.71%">
 </div>
 </body>
 
