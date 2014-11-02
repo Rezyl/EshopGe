@@ -17,7 +17,7 @@
 
                 <span style="display: block; text-align: center" id="price"><c:out value="${item.price} Kč s DPH"/></span>
 
-                <div>
+              <div style="text-align: center">
                     <form action="addItemsToOrder" method="get">
                         <select name="size" style="align-content: center">
                             <c:forEach var="s" items="${item.getAvailableSizesAsList()}">
