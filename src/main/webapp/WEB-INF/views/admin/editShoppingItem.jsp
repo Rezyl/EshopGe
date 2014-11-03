@@ -5,6 +5,8 @@
   Time: 19:14
   To change this template use File | Settings | File Templates.
 --%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,29 +20,60 @@
 <div class="panel">
     <h2>Editace zboží</h2>
 
-    <div class="col_400 float_l">
-        <form:form method="POST" modelAttribute="updateShoppingItem" action="updateShoppingItem"
+    <img id="image" src="${updateShoppingItem.imageFilePath}" align="left" alt="${updateShoppingItem.name}"
+         style="margin-right: 10px"
+         width="214" height="233">
+
+    <div style="float: left" class="col_400 float_l">
+        <form:form method="POST" modelAttribute="updateItem" action="updateShoppingItem"
                    enctype='multipart/form-data'>
-            <label for="image">Aktualni obrazek:</label>
-            <img id="image" src="${updateShoppingItem.imageFilePath}" align="left" alt="${updateShoppingItem.name}"
-                 width="214" height="233">
+
+            <label for="file">Obrázek položky:</label>
             <input type="file" name="file" id="file"/>
+            <br>
+            <br>
+
+            <label for="filesForGallery">Obrázky pro galerii:</label>
+            <input type="file" name="filesForGallery" id="filesForGallery" multiple/>
+            <br>
+            <br>
 
             <label for="itemId">ID:</label>
             <form:input path="itemId" readonly="true" id="itemId" cssClass="input_field"/>
-            <label for="name">Jmeno:</label>
+            <br>
+            <br>
+            <label for="name">Název položky:</label>
             <form:input path="name" id="name" cssClass="input_field"/>
             <form:errors path="name" cssClass="errorMessage"/>
+            <br>
+            <br>
+            <label for="description">Popisek položky:</label>
+            <form:textarea path="description" id="description" cssClass="input_field"/>
+            <form:errors path="description" cssClass="errorMessage"/>
+            <br>
+            <br>
 
 
             <label for="price">Cena za kus:</label>
             <form:input path="price" id="price" cssClass="input_field"/>
+            <br>
+            <br>
 
             <label for="category">Kategorie:</label>
             <form:select path="category" items="${categoryValues}" id="category" cssClass="input_field"/>
+            <br>
+            <br>
 
             <label for="quantity">Počet:</label>
             <form:input path="quantity" id="quantity" cssClass="input_field"/>
+            <br>
+            <br>
+
+            <div>
+                <label for="sizes">Velikosti:</label>
+                <form:checkboxes items="${sizesValues}" id="sizes" path="availableSizes"/>
+            </div>
+            <br>
 
             <div class="cleaner_h10"></div>
 
@@ -49,7 +82,6 @@
 
         </form:form>
     </div>
-
 
 </div>
 </body>

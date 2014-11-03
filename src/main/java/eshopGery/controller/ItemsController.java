@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,7 +21,7 @@ import eshopGery.service.api.EshopConstants;
 import eshopGery.service.api.ShopItemService;
 
 @Controller
-@SessionAttributes("OrderObj")
+@SessionAttributes({ "OrderObj", "updateItem" })
 public class ItemsController {
 
 	private static final String NAME_OF_DIR_TO_SAVE_IMAGES = "socksImages";
@@ -30,10 +31,9 @@ public class ItemsController {
 	/**
 	 * ADMIN PART
 	 */
-
 	@RequestMapping(EshopConstants.ADMIN_PART_PREFIX + "adminPartShoppingItems")
 	public ModelAndView getAllItems(WebRequest webRequest) {
-		ModelAndView mav = new ModelAndView("/admin/administration");
+		ModelAndView mav = new ModelAndView(EshopConstants.ADMIN_PART_PREFIX + "administration");
 		List<ShoppingItem> items = service.getAllItems();
 		mav.addObject("SEARCH_ITEM_RESULTS_KEY", items);
 		// message
@@ -46,34 +46,62 @@ public class ItemsController {
 	}
 
 	@RequestMapping(EshopConstants.ADMIN_PART_PREFIX + "saveShoppingItemForm")
-	public ModelAndView newItemForm() {
-		ModelAndView mav = new ModelAndView("/admin/newShoppingItem");
+	public ModelAndView createForm() {
+		ModelAndView mav = new ModelAndView(EshopConstants.ADMIN_PART_PREFIX + "newShoppingItem");
 		ShoppingItem item = new ShoppingItem();
-		mav.getModelMap().put("categoryValues", getAllcategorieMap());
+		mav.getModelMap().put("categoryValues", getAllCategoryMap());
 		mav.getModelMap().put("sizesValues", getAllSizesMap());
 		mav.getModelMap().put("shoppingItem", item);
 		return mav;
 	}
 
-	private Map<Category, String> getAllcategorieMap() {
-		Map<Category, String> categoryValues = new HashMap<Category, String>();
-		for (Category category : Category.values()) {
-			categoryValues.put(category, category.getDisplayName());
-		}
-		return categoryValues;
-	}
-
-	private Map<SizeOfSock, String> getAllSizesMap() {
-		Map<SizeOfSock, String> sizeValues = new HashMap<SizeOfSock, String>();
-		for (SizeOfSock sizeOfSock : SizeOfSock.values()) {
-			sizeValues.put(sizeOfSock, sizeOfSock.getDisplayName());
-		}
-		return sizeValues;
+	@RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "updateShoppingItemForm", method = RequestMethod.GET)
+	public ModelAndView editForm(@RequestParam("itemId") Long itemId) {
+		ModelAndView mav = new ModelAndView(EshopConstants.ADMIN_PART_PREFIX + "editShoppingItem");
+		ShoppingItem item = service.findItemById(itemId);
+		mav.addObject("updateItem", item);
+		mav.getModelMap().put("categoryValues", getAllCategoryMap());
+		mav.getModelMap().put("sizesValues", getAllSizesMap());
+		return mav;
 	}
 
 	@RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "saveShoppingItem", method = RequestMethod.POST)
 	public ModelAndView create(@ModelAttribute("shoppingItem") ShoppingItem item, BindingResult result, @RequestParam("file") MultipartFile file,
 			@RequestParam("filesForGallery") MultipartFile[] filesForGallery, HttpSession session) {
+		if (result.hasErrors()) {
+			return new ModelAndView("redirect:saveShoppingItem");
+		}
+		String message = uploadAllImages(item, file, filesForGallery, session);
+		service.createItem(item);
+		return new ModelAndView("redirect:adminPartShoppingItems", "message", message);
+	}
+
+	@RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "updateShoppingItem", method = RequestMethod.POST)
+	public ModelAndView edit(@ModelAttribute("updateItem") ShoppingItem shoppingItem, BindingResult result, @RequestParam("file") MultipartFile file,
+			@RequestParam("filesForGallery") MultipartFile[] filesForGallery, HttpSession session, SessionStatus status) {
+		if (result.hasErrors()) {
+			return new ModelAndView("redirect:updateShoppingItem");
+		}
+		String message = uploadAllImages(shoppingItem, file, filesForGallery, session);
+		service.updateItem(shoppingItem);
+		status.setComplete();
+		return new ModelAndView("redirect:adminPartShoppingItems", "message", message);
+	}
+
+	@RequestMapping(EshopConstants.ADMIN_PART_PREFIX + "deleteItem")
+	public String delete(@RequestParam("itemId") Long IDshoppingItem) {
+		ShoppingItem item = service.findItemById(IDshoppingItem);
+		service.deleteImage(item.getImageFilePath());
+		service.deleteItem(item);
+		return "redirect:adminPartShoppingItems";
+	}
+
+	/**
+	 * Upload image of item and images to gallery
+	 * 
+	 * @return message of result
+	 */
+	private String uploadAllImages(ShoppingItem item, MultipartFile file, MultipartFile[] filesForGallery, HttpSession session) {
 		String message;
 		// TODO valid correct file type
 		// if (!file.isEmpty() && file.getContentType().equals(XLS_FORMAT) || file.getContentType().equals(XLSX_FORMAT)) {
@@ -91,50 +119,7 @@ public class ItemsController {
 			imagesForGallery.add(imageGallery);
 		}
 		item.setImageForGallery(service.decodeImagesPath(imagesForGallery));
-
-		if (result.hasErrors()) {
-			return new ModelAndView("redirect:saveShoppingItem");
-		}
-		service.createItem(item);
-		return new ModelAndView("redirect:adminPartShoppingItems", "message", message);
-	}
-
-	@RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "updateShoppingItemForm", method = RequestMethod.GET)
-	public ModelAndView editForm(@RequestParam("itemId") Long itemId) {
-		ModelAndView mav = new ModelAndView("/admin/editShoppingItem");
-		ShoppingItem item = service.findItemById(itemId);
-		Map<Category, String> categoryValues = getAllcategorieMap();
-		mav.getModelMap().put("categoryValues", categoryValues);
-		mav.addObject("updateShoppingItem", item);
-		return mav;
-	}
-
-	@RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "updateShoppingItem", method = RequestMethod.POST)
-	public String edit(@ModelAttribute("updateShoppingItem") ShoppingItem shoppingItem, BindingResult result, @RequestParam("file") MultipartFile file,
-			HttpSession session) {
-		String message;
-		// TODO valid correct file type
-		// if (!file.isEmpty() && file.getContentType().equals(XLS_FORMAT) || file.getContentType().equals(XLSX_FORMAT)) {
-		String fullImagePath = service.uploadImage(getRootDirToSaveImages(session), file);
-		if (fullImagePath != null) {
-			message = "Success!";
-			shoppingItem.setImageFilePath(fullImagePath);
-		} else {
-			message = "Nahravan spatny soubor";
-		}
-		if (result.hasErrors()) {
-			return "/admin/editShoppingItem";
-		}
-		service.updateItem(shoppingItem);
-		return "redirect:viewAllItems";
-	}
-
-	@RequestMapping(EshopConstants.ADMIN_PART_PREFIX + "deleteItem")
-	public String delete(@RequestParam("itemId") Long IDshoppingItem) {
-		ShoppingItem item = service.findItemById(IDshoppingItem);
-		service.deleteImage(item.getImageFilePath());
-		service.deleteItem(item);
-		return "redirect:viewAllItems";
+		return message;
 	}
 
 	private String getRootDirToSaveImages(HttpSession session) {
@@ -143,12 +128,27 @@ public class ItemsController {
 		return sc.getRealPath("resources") + fileSeparator + NAME_OF_DIR_TO_SAVE_IMAGES + fileSeparator;
 	}
 
+	private Map<Category, String> getAllCategoryMap() {
+		Map<Category, String> categoryValues = new HashMap<Category, String>();
+		for (Category category : Category.values()) {
+			categoryValues.put(category, category.getDisplayName());
+		}
+		return categoryValues;
+	}
+
+	private Map<SizeOfSock, String> getAllSizesMap() {
+		Map<SizeOfSock, String> sizeValues = new HashMap<SizeOfSock, String>();
+		for (SizeOfSock sizeOfSock : SizeOfSock.values()) {
+			sizeValues.put(sizeOfSock, sizeOfSock.getDisplayName());
+		}
+		return sizeValues;
+	}
+
 	/**
 	 * PUBLIC PART
 	 */
-
 	@RequestMapping("/showByCategory")
-	public ModelAndView getAllItemsByCetegory(@RequestParam("category") String category) {
+	public ModelAndView getAllItemsByCategory(@RequestParam("category") String category) {
 		ModelAndView mav = new ModelAndView("obchod");
 		Category categoryEnum = Category.valueOf(category);
 		List<ShoppingItem> items = service.getAllByCategory(categoryEnum);
