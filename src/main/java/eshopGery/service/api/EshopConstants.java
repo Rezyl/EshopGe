@@ -7,5 +7,7 @@ package eshopGery.service.api;
  */
 public class EshopConstants {
 
-    public static final String ADMIN_PART_PREFIX = "admin/";
+	public static final String ADMIN_PART_PREFIX = "admin/";
+
+	public static final int PAGE_SIZE = 6;
 }

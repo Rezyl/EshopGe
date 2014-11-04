@@ -6,12 +6,17 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import eshopGery.dao.ShoppingItemDao;
 import eshopGery.model.Category;
 import eshopGery.model.ShoppingItem;
+import eshopGery.repository.ShoppingItemRepository;
+import eshopGery.service.api.EshopConstants;
 import eshopGery.service.api.ShopItemService;
 
 /**
@@ -24,6 +29,9 @@ public class ShopItemServiceImpl implements ShopItemService {
 
 	@Autowired
 	private ShoppingItemDao shoppingItemDao;
+
+	@Autowired
+	private ShoppingItemRepository shoppingItemRepository;
 
 	@Override
 	public void createItem(ShoppingItem shoppingItem) {
@@ -48,6 +56,18 @@ public class ShopItemServiceImpl implements ShopItemService {
 	@Override
 	public ShoppingItem findItemById(Long id) {
 		return shoppingItemDao.getById(id);
+	}
+
+	@Override
+	public Page<ShoppingItem> getItemsToPage(int pageNumber) {
+		PageRequest request = new PageRequest(pageNumber - 1, EshopConstants.PAGE_SIZE, Sort.Direction.DESC);
+		return shoppingItemRepository.findAll(request);
+	}
+
+	@Override
+	public Page<ShoppingItem> getItemsToPageByCategory(int pageNumber, Category category) {
+		PageRequest request = new PageRequest(pageNumber - 1, EshopConstants.PAGE_SIZE);
+		return shoppingItemRepository.findByCategory(category, request);
 	}
 
 	@Override
@@ -112,18 +132,18 @@ public class ShopItemServiceImpl implements ShopItemService {
 		return null;
 	}
 
-    @Override
-    public String decodeImagesPath(List<String> imagesPath) {
-        StringBuilder result = new StringBuilder();
-        for (String path : imagesPath) {
-            result.append(path).append("|");
-        }
-        return result.toString();
-    }
+	@Override
+	public String decodeImagesPath(List<String> imagesPath) {
+		StringBuilder result = new StringBuilder();
+		for (String path : imagesPath) {
+			result.append(path).append("|");
+		}
+		return result.toString();
+	}
 
-    @Override
-    public List<String> encodeImagesPath(String decodePath) {
-        String[] imagesPath = decodePath.split("\\|");
-        return Arrays.asList(imagesPath);
-    }
+	@Override
+	public List<String> encodeImagesPath(String decodePath) {
+		String[] imagesPath = decodePath.split("\\|");
+		return Arrays.asList(imagesPath);
+	}
 }

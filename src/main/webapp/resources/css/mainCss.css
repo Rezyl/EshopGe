@@ -15,3 +15,41 @@ body {
 .errorMessage {
  color: red;
 }
+
+.pagination {
+    text-align: center;
+    margin: 20px;
+
+}
+
+.pagination li a, .pagination li .active {
+    background: #fff;
+    display: inline-block;
+    margin-right: 3px;
+    padding: 4px 12px;
+    text-decoration: none;
+    line-height: 1.5em;
+
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.pagination li a:hover {
+    background-color: #BEBEBE;
+    color: #fff;
+}
+
+.pagination li a:active {
+    background: rgba(190, 190, 190, 0.75);
+}
+
+.pagination li .active {
+    color: #fff;
+    background-color: #BEBEBE;
+}
+
+.pagination li {
+    display: inline;
+    list-style-type: none;
+}

@@ -5,10 +5,9 @@
     <%--<sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">--%>
     <%--<input type="button" value="Novy Zavodnik" onclick="javascript:go('saveCompetitor.do');" class="submit_btn float_l"/>--%>
     <%--</sec:authorize>--%>
-
-    <c:if test="${! empty SEARCH_ITEM_RESULTS_KEY}">
-        <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
-          <div id="ShoppingItem" style="float: left; width: 18%; align-content: center">
+<c:if test="${! empty SEARCH_ITEM_RESULTS_KEY.getContent()}">
+    <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY.getContent()}">
+    <div id="ShoppingItem" style="float: left; width: 18%; align-content: center">
                 <a href="showGallery?itemId=${item.itemId}" data-toggle="modal" data-target="#myModal">
                     <img style="display: block; margin: 10%" id="image" src="${item.imageFilePath}" align="center" alt="${item.name}"
                          width="87%" height="87%"></a>
@@ -38,7 +37,8 @@
                 </div>
             </div>
         </c:forEach>
+        <jsp:include page="paginationShoppingItems.jsp"/>
     </c:if>
-    <c:if test="${empty SEARCH_ITEM_RESULTS_KEY}">
-        <span>Nenalezeno žádné zboží.</span>
+<c:if test="${empty SEARCH_ITEM_RESULTS_KEY.getContent()}">
+<span>Nenalezeno žádné zboží.</span>
     </c:if>

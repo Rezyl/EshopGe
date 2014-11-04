@@ -2,15 +2,20 @@ package eshopGery.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManagerFactory;
+
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -22,6 +27,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @EnableWebMvc
+@EnableJpaRepositories(value = "eshopGery.repository", entityManagerFactoryRef = "entityManagerFactory", transactionManagerRef = "transactionManager")
 @ComponentScan(basePackages = "eshopGery")
 @PropertySource("classpath:config.properties")
 @EnableTransactionManagement
@@ -54,7 +60,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public HibernateTransactionManager getHibernateTransactionManager() {
+	public HibernateTransactionManager transactionManager() {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 		transactionManager.setSessionFactory(this.sessionFactory().getObject());
 		return transactionManager;
@@ -68,6 +74,21 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		session.setAnnotatedPackages("eshopGery");
 		session.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
 		return session;
+	}
+
+	@Bean
+	public EntityManagerFactory entityManagerFactory() {
+
+		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		vendorAdapter.setGenerateDdl(true);
+
+		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+		factory.setJpaVendorAdapter(vendorAdapter);
+		factory.setPackagesToScan("eshopGery.repository", "eshopGery.model");
+		factory.setDataSource(dataSource());
+		factory.afterPropertiesSet();
+
+		return factory.getObject();
 	}
 
 	@Bean
