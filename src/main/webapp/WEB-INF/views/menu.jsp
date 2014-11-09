@@ -12,19 +12,19 @@
     <a target="_top" href="showByCategory/pages/1?category=ALTERNATIVE"><img border="0" src="/resources/img/obchod.png"
                                                                              width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <a target="_top" href="top"><img border="0" src="/resources/img/top.png" width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_top" href="/top"><img border="0" src="/resources/img/top.png" width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <a target="_top" href="onas"><img border="0" src="/resources/img/onas.png" width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_top" href="/onas"><img border="0" src="/resources/img/onas.png" width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <a target="_top" href="kontakt"><img border="0" src="/resources/img/kontakt.png" width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a target="_top" href="/kontakt"><img border="0" src="/resources/img/kontakt.png" width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <a target="_top" href="orderForm"><img border="0" src="/resources/img/kosik.png" width="11%" height="4.036%"></a>
+    <a target="_top" href="/orderForm"><img border="0" src="/resources/img/kosik.png" width="11%" height="4.036%"></a>
     <c:choose>
         <c:when test="${OrderObj.emptyItems eq false}">
-            <a href="orderForm"><img border="0" src="/resources/img/plny.png" width="2.4%" height="3.9%"></a>
+            <a href="/orderForm"><img border="0" src="/resources/img/plny.png" width="2.4%" height="3.9%"></a>
         </c:when>
         <c:otherwise>
-            <a href="orderForm"><img border="0" src="/resources/img/prazdny.png" width="2.4%" height="3.9%"></a>
+            <a href="/orderForm"><img border="0" src="/resources/img/prazdny.png" width="2.4%" height="3.9%"></a>
         </c:otherwise>
     </c:choose>
 </p>

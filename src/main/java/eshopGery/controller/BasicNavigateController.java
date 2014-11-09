@@ -31,16 +31,11 @@ public class BasicNavigateController {
 
 	@RequestMapping(value = "/kontakt")
 	public ModelAndView getFrameKontakt() {
-		return new ModelAndView("kontakt","contactMessage", new EmailMessage());
+		return new ModelAndView("kontakt", "contactMessage", new EmailMessage());
 	}
 
-	@RequestMapping(value = "/obchodleva")
-	public ModelAndView getObchodLeva() {
-		return new ModelAndView("obchodleva");
+	@RequestMapping(value = "/terms")
+	public ModelAndView getTerms() {
+		return new ModelAndView("obchodnipodminky");
 	}
-
-    @RequestMapping(value = "/terms")
-    public ModelAndView getTerms() {
-        return new ModelAndView("obchodnipodminky");
-    }
 }

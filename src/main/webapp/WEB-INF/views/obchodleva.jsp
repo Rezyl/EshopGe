@@ -7,7 +7,7 @@
     &nbsp;</b></font></span>
 
     <c:forEach var="cat" items="${allCategories}">
-        <c:url var="showByCategoryUrl" value="/showByCategory">
+        <c:url var="showByCategoryUrl" value="/showByCategory/pages/1">
             <c:param name="category" value="${cat}"/>
         </c:url>
         <p>
