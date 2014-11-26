@@ -6,7 +6,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -148,22 +147,14 @@ public class ItemsController {
 	/**
 	 * PUBLIC PART
 	 */
-	@RequestMapping(value = "/showByCategory/pages/{pageNumber}", method = RequestMethod.GET)
-	public ModelAndView getAllItemsByCategory(@PathVariable Integer pageNumber, @RequestParam("category") String category) {
+	@RequestMapping(value = "/showByCategory", method = RequestMethod.GET)
+	public ModelAndView getAllItemsByCategory(@RequestParam("category") String category) {
 		ModelAndView mav = new ModelAndView("obchod");
 		Category categoryEnum = Category.valueOf(category);
-		Page<ShoppingItem> items = service.getItemsToPageByCategory(pageNumber, categoryEnum);
+		List<ShoppingItem> items = service.getAllByCategory(categoryEnum);
 		mav.addObject("SEARCH_ITEM_RESULTS_KEY", items);
 		mav.addObject("allCategories", Arrays.asList(Category.values()));
 		mav.addObject("actualCategory", category);
-
-		int current = items.getNumber() + 1;
-		int begin = Math.max(1, current - 5);
-		int end = Math.min(begin + 10, items.getTotalPages());
-
-		mav.addObject("beginIndex", begin);
-		mav.addObject("endIndex", end);
-		mav.addObject("currentIndex", current);
 		return mav;
 	}
 
