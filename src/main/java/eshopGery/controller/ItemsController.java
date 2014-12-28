@@ -2,7 +2,6 @@ package eshopGery.controller;
 
 import java.util.*;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,6 @@ import eshopGery.service.api.ShopItemService;
 @SessionAttributes({ "OrderObj", "updateItem" })
 public class ItemsController {
 
-	private static final String NAME_OF_DIR_TO_SAVE_IMAGES = "socksImages";
 	@Autowired
 	private ShopItemService service;
 
@@ -106,7 +104,10 @@ public class ItemsController {
 		String message;
 		// TODO valid correct file type
 		// if (!file.isEmpty() && file.getContentType().equals(XLS_FORMAT) || file.getContentType().equals(XLSX_FORMAT)) {
-		String imagePath = service.uploadImage(getRootDirToSaveImages(session), file);
+		// save to storage
+		service.uploadImage(EshopConstants.getRootDirToSaveImages(), file, false);
+		// save to resources
+		String imagePath = service.uploadImage(EshopConstants.getResourcesDirToSaveImages(session.getServletContext()), file, true);
 		if (imagePath != null) {
 			message = "Success!";
 			item.setImageFilePath(imagePath);
@@ -116,17 +117,14 @@ public class ItemsController {
 		// IMAGE GALLERY
 		List<String> imagesForGallery = new ArrayList<String>();
 		for (MultipartFile multipartFile : filesForGallery) {
-			String imageGallery = service.uploadImage(getRootDirToSaveImages(session), multipartFile);
+			// save to storage
+			service.uploadImage(EshopConstants.getRootDirToSaveImages(), file, false);
+			// save to resources
+			String imageGallery = service.uploadImage(EshopConstants.getResourcesDirToSaveImages(session.getServletContext()), file, true);
 			imagesForGallery.add(imageGallery);
 		}
 		item.setImageForGallery(service.decodeImagesPath(imagesForGallery));
 		return message;
-	}
-
-	private String getRootDirToSaveImages(HttpSession session) {
-		String fileSeparator = System.getProperty("file.separator");
-		ServletContext sc = session.getServletContext();
-		return sc.getRealPath("resources") + fileSeparator + NAME_OF_DIR_TO_SAVE_IMAGES + fileSeparator;
 	}
 
 	private Map<Category, String> getAllCategoryMap() {
