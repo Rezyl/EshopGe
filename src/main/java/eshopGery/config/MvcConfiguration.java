@@ -3,8 +3,10 @@ package eshopGery.config;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -49,6 +51,9 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
 	@Value("${hibernate.hbm2ddl.auto}")
 	private String hibProp1;
+
+	@Autowired
+	private ServletContext servletContext;
 
 	@Bean
 	public ViewResolver viewResolver() {
@@ -163,6 +168,14 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		result.setTemplateLoaderPath("WEB-INF/templates/");
 
 		return result;
+	}
+
+	/**
+	 * Initialization app
+	 */
+	@Bean
+	public Initialization getInitialization() {
+		return new Initialization(servletContext);
 	}
 
 }

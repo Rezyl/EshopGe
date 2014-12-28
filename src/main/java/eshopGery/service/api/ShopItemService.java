@@ -31,7 +31,7 @@ public interface ShopItemService {
 
 	public ShoppingItem findItemById(Long id);
 
-	public String uploadImage(String pathToDirectory, MultipartFile file);
+	public String uploadImage(String pathToDirectory, MultipartFile file, boolean resources);
 
 	public String decodeImagesPath(List<String> imagesPath);
 

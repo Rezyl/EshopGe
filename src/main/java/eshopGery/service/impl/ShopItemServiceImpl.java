@@ -82,7 +82,7 @@ public class ShopItemServiceImpl implements ShopItemService {
 	}
 
 	@Override
-	public String uploadImage(String pathToDirectory, MultipartFile file) {
+	public String uploadImage(String pathToDirectory, MultipartFile file, boolean resources) {
 		File rootDir = new File(pathToDirectory);
 		// if the directory does not exist, create it
 		if (!rootDir.exists()) {
@@ -91,11 +91,16 @@ public class ShopItemServiceImpl implements ShopItemService {
 		String fullPath = pathToDirectory + file.getOriginalFilename();
 		try {
 			writeFileAsBytes(fullPath, file.getBytes());
-			int splitIndex = fullPath.indexOf("resources");
-			return fullPath.substring(splitIndex);
+			if (resources) {
+				int splitIndex = fullPath.indexOf("resources");
+				return fullPath.substring(splitIndex);
+			} else {
+				return fullPath;
+			}
 		} catch (IOException e) {
 			return null;
 		}
+
 	}
 
 	@Override
