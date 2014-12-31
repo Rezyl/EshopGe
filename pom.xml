@@ -16,6 +16,7 @@
         <spring.version>3.2.9.RELEASE</spring.version>
         <cglib.version>2.2.2</cglib.version>
         <spring.security.version>3.2.3.RELEASE</spring.security.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>

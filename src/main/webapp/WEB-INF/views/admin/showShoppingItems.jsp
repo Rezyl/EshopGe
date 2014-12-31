@@ -1,9 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@include file="/WEB-INF/views/taglib_imports.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
-<%@include file="../taglib_imports.jsp" %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">

@@ -1,20 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lukas
-  Date: 3.8.14
-  Time: 19:14
-  To change this template use File | Settings | File Templates.
---%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@include file="/WEB-INF/views/taglib_imports.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title></title>
 </head>
 <body>
 
-<%@include file="/WEB-INF/views/taglib_imports.jsp" %>
+
 <strong>${message}</strong>
 
 <div class="panel">
