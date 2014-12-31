@@ -22,6 +22,8 @@ public interface OrderService {
 
 	public String encodeShoppingItem(Map<ShoppingItem, Integer> items);
 
+    public Map<ShoppingItem, Integer> decodeShoppingItem(String code);
+
 	public int calculatePriceOfItems(Map<ShoppingItem, Integer> items);
 
 	public int calculateTotalPrice(Map<ShoppingItem, Integer> items, TypePayment typePayment);
@@ -30,5 +32,11 @@ public interface OrderService {
 
 	public void createOrder(Order order);
 
+    public void updateOrder(Order order);
+
 	public List<Order> getAllItems();
+
+    public List<Order> applyFilter(boolean complete, boolean paid);
+
+    public void removePiecesOfShoppingItems(Map<ShoppingItem, Integer> items);
 }

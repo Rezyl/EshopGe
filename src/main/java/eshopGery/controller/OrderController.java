@@ -151,6 +151,9 @@ public class OrderController {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss");
         String parseDateTime = formatter.print(now);
 		order.setDateCreate(parseDateTime);
+        //remove pieces from warehouse
+        orderService.removePiecesOfShoppingItems(order.getShoppingItems());
+        //encode items to string code (database)
 		order.setShoppingItemCodes(orderService.encodeShoppingItem(order.getShoppingItems()));
 		orderService.createOrder(order);
         //send email recapitulation
@@ -176,4 +179,38 @@ public class OrderController {
 		return mav;
 	}
 
+    @RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "showOrderDetailForm", method = RequestMethod.GET)
+    public ModelAndView getOrderDetailForm(@RequestParam("itemId") Long itemId) {
+        ModelAndView mav = new ModelAndView(EshopConstants.ADMIN_PART_PREFIX + "orderDetail");
+        Order order= orderService.findItemById(itemId);
+        mav.addObject("orderDetail", order);
+        mav.addObject("orderItems", orderService.decodeShoppingItem(order.getShoppingItemCodes()));
+        return mav;
+    }
+
+    @RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "showOrderDetail", method = RequestMethod.POST)
+    public ModelAndView submitOrderDetail(@RequestParam("itemId") Long itemId,@RequestParam(value = "complete", defaultValue = "false") boolean complete, @RequestParam(value = "paid", defaultValue = "false") boolean paid) {
+        Order order= orderService.findItemById(itemId);
+        order.setComplete(complete);
+        order.setPaid(paid);
+        //because validation is enabled
+        order.setAcceptTerms(true);
+        orderService.updateOrder(order);
+        return new ModelAndView("redirect:adminPartOrders", "message", "Uspěšně uloženo");
+    }
+
+    @RequestMapping(value = EshopConstants.ADMIN_PART_PREFIX + "filterOrders", method = RequestMethod.GET)
+    public ModelAndView filterOrders(@RequestParam(value = "complete", defaultValue = "false") boolean complete, @RequestParam(value = "paid", defaultValue = "false") boolean paid, WebRequest webRequest) {
+        ModelAndView mav = new ModelAndView("/admin/administration");
+
+        List<Order> orders = orderService.applyFilter(complete, paid);
+        mav.addObject("SEARCH_ITEM_RESULTS_KEY", orders);
+        //message
+        String message = webRequest.getParameter("message");
+        if (message != null) {
+            mav.addObject("message", message);
+        }
+        mav.addObject("typeOfPage", "order");
+        return mav;
+    }
 }
