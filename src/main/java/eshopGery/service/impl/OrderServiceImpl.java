@@ -1,6 +1,7 @@
 package eshopGery.service.impl;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +12,9 @@ import eshopGery.dao.OrderDao;
 import eshopGery.model.Order;
 import eshopGery.model.ShoppingItem;
 import eshopGery.model.TypePayment;
+import eshopGery.repository.OrderRepository;
 import eshopGery.service.api.OrderService;
+import eshopGery.service.api.ShopItemService;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,6 +26,12 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private OrderDao orderDao;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private ShopItemService shopItemService;
 
 	@Override
 	public void addItemToOrder(Order order, ShoppingItem item) {
@@ -72,7 +81,12 @@ public class OrderServiceImpl implements OrderService {
 		orderDao.save(order);
 	}
 
-	@Override
+    @Override
+    public void updateOrder(Order order) {
+        orderDao.update(order);
+    }
+
+    @Override
 	public List<Order> getAllItems() {
 		return orderDao.getAllItems();
 	}
@@ -82,13 +96,28 @@ public class OrderServiceImpl implements OrderService {
 		StringBuilder result = new StringBuilder();
 		for (Map.Entry<ShoppingItem, Integer> entry : items.entrySet()) {
 			for (int i = 0; i < entry.getValue(); i++) {
-				result.append(entry.getKey().getItemId()).append("|");
+				result.append(entry.getKey().getItemId())
+                        .append(",")
+                        .append(entry.getValue())
+                        .append("|");
 			}
 		}
 		return result.toString();
 	}
 
-	@Override
+    @Override
+    public Map<ShoppingItem, Integer> decodeShoppingItem(String code) {
+        //code is encode like itemID1,count|itemID2,count ...
+        Map<ShoppingItem, Integer> result = new LinkedHashMap<ShoppingItem, Integer>();
+        String[] itemsOfMap = code.split("\\|");
+        for (String item : itemsOfMap) {
+            String[] s = item.split(",");
+            result.put(shopItemService.findItemById(Long.valueOf(s[0])), Integer.valueOf(s[1]));
+        }
+        return result;
+    }
+
+    @Override
 	public int calculatePriceOfItems(Map<ShoppingItem, Integer> items) {
 		int price = 0;
 		for (Map.Entry<ShoppingItem, Integer> shoppingItemIntegerEntry : items.entrySet()) {
@@ -103,4 +132,20 @@ public class OrderServiceImpl implements OrderService {
 	public int calculateTotalPrice(Map<ShoppingItem, Integer> items, TypePayment typePayment) {
 		return calculatePriceOfItems(items) + typePayment.getPricePayment();
 	}
+
+	@Override
+	public List<Order> applyFilter(boolean complete, boolean paid) {
+		return orderRepository.findByFilter(complete, paid);
+	}
+
+    @Override
+    public void removePiecesOfShoppingItems(Map<ShoppingItem, Integer> items) {
+        for (Map.Entry<ShoppingItem, Integer> shoppingItemIntegerEntry : items.entrySet()) {
+            Long itemID = shoppingItemIntegerEntry.getKey().getItemId();
+            ShoppingItem item = shopItemService.findItemById(itemID);
+            Integer newQuantity = item.getQuantity() - shoppingItemIntegerEntry.getValue();
+            item.setQuantity(newQuantity);
+            shopItemService.updateItem(item);
+        }
+    }
 }

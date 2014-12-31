@@ -13,6 +13,14 @@
     <%--<sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">--%>
     <%--<input type="button" value="Novy Zavodnik" onclick="javascript:go('saveCompetitor.do');" class="submit_btn float_l"/>--%>
     <%--</sec:authorize>--%>
+    <div id="filter">
+        <form action="filterOrders" method="get" target="_blank">
+            <label><input type="checkbox" name="complete"/>Vyřízené</label>
+            <label><input type="checkbox" name="paid"/>Zaplacené</label>
+            <input type="submit" value="Zobrazit"/>
+        </form>
+
+    </div>
     <c:if test="${! empty SEARCH_ITEM_RESULTS_KEY}">
         <table>
             <thead>
@@ -20,44 +28,34 @@
                 <th>Kód obj.</th>
                 <th>Jmeno</th>
                 <th>Prijmeni</th>
-                <th>Ulice</th>
-                <th>Mesto</th>
-                <th>PSČ</th>
-                <th>E-mail</th>
-                <th>Mobil</th>
-                <th>Poznámky</th>
-                <th>Druh platby</th>
-                <th>Položky</th>
                 <th>Celková cena</th>
                 <th>Datum vytvoření</th>
                 <th>Zaplaceno?</th>
                 <th>Vyřízeno?</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
+            <c:url var="orderDetail" value="/admin/showOrderDetailForm">
+                <c:param name="itemId" value="${item.orderID}"/>
+            </c:url>
             <tr>
                 <td width="200"><c:out value="${item.orderID}"></c:out></td>
                 <td width="200"><c:out value="${item.name}"></c:out></td>
                 <td width="200"><c:out value="${item.surname}"></c:out></td>
-                <td width="200"><c:out value="${item.street}"></c:out></td>
-                <td width="200"><c:out value="${item.city}"></c:out></td>
-                <td width="200"><c:out value="${item.psc}"></c:out></td>
-                <td width="200"><c:out value="${item.email}"></c:out></td>
-                <td width="200"><c:out value="${item.mobile}"></c:out></td>
-                <td width="200"><c:out value="${item.notes}"></c:out></td>
-                <td width="200"><c:out value="${item.typeOfPayment}"></c:out></td>
-                    <%--todo etems--%>
                 <td width="200"><c:out value="${item.totalPrice}"></c:out></td>
                 <td width="200"><c:out value="${item.dateCreate}"></c:out></td>
-                    <%--todo radio buttons--%>
+                <td width="200"><c:out value="${item.paid}"></c:out></td>
+                <td width="200"><c:out value="${item.complete}"></c:out></td>
+                <td width="200"><a href="${orderDetail}">DETAIL</a></td>
             </tr>
             </tbody>
             </c:forEach>
         </table>
     </c:if>
     <c:if test="${empty SEARCH_ITEM_RESULTS_KEY}">
-        <span>Nenalezeno zboží.</span>
+        <span>Nejsou vytvořeny žádné objednávky.</span>
     </c:if>
 </div>
 

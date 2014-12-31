@@ -38,4 +38,9 @@ public class BasicNavigateController {
 	public ModelAndView getTerms() {
 		return new ModelAndView("obchodnipodminky");
 	}
+
+    @RequestMapping(value = "/administration")
+    public String goToAdminitration() {
+        return "redirect:admin/adminPartShoppingItems";
+    }
 }

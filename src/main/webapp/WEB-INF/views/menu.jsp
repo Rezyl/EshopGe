@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <%@include file="taglib_imports.jsp" %>
 <p align="center">
-    <a href="admin/adminPartShoppingItems"><img border="0" src="/resources/img/logovlevo.png" width="29%"></a>
+    <a href="/"><img border="0" src="/resources/img/logovlevo.png" width="29%"></a>
     <img border="0" src="/resources/img/logovpravo.png" width="42%" height="18.62%"></p>
 
 <p align="center"><img border="0" src="/resources/img/oddelovac.bmp" width="73%" height="4"></p>
