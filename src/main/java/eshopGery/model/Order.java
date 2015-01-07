@@ -65,7 +65,7 @@ public class Order {
 	@NotBlank
 	private String email;
 	@Column
-	@Pattern(regexp = "(^$|[0-9]{10})")
+	@Pattern(regexp = "(^[0-9]{9}$)")
 	@NotBlank
 	private String mobile;
 	@Column
