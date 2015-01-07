@@ -43,6 +43,7 @@ public class MailServiceImpl implements MailService {
 
     private static final String REC_CASH_TEMPLATE_NAME = "rekplatbadobirkou.ftl";
     private static final String REC_CREDIT_CARD_TEMPLATE_NAME = "rekplatbaprevodem.ftl";
+    private static final String REC_PERSONAL_TEMPLATE_NAME = "rekosobniodber.ftl";
     @Autowired
     private JavaMailSender mailSender;
 
@@ -66,7 +67,7 @@ public class MailServiceImpl implements MailService {
     @Override
     public void sendRecapitulation(Order order, ServletContext servletContext) {
         String[] attachmentNames = {"logo.png"};
-        EmailMessage messageDTO = createEmailMessageDTO(order.getEmail(), "TODO", attachmentNames, servletContext);
+        EmailMessage messageDTO = createEmailMessageDTO(order.getEmail(), "BisonSocks.cz - Vaše objednávka", attachmentNames, servletContext);
 
         messageDTO.addTemplateItem("order", order);
         messageDTO.addTemplateItem("shoppingItems", new ArrayList<Map.Entry<ShoppingItem, Integer>>(order.getShoppingItems().entrySet()));
@@ -81,8 +82,8 @@ public class MailServiceImpl implements MailService {
                 htmlContent = processTemplate(messageDTO.getTemplateCnx(),REC_CREDIT_CARD_TEMPLATE_NAME);
                 break;
             case PERSONAL:
-                //TODO personal template
-                //htmlContent = processTemplate(messageDTO.getTemplateCnx(),REC_CREDIT_CARD_TEMPLATE_NAME);
+                htmlContent = processTemplate(messageDTO.getTemplateCnx(),REC_PERSONAL_TEMPLATE_NAME);
+                break;
         }
         messageDTO.setMessage(htmlContent);
 
