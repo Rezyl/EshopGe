@@ -19,7 +19,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "OrderItem")
 public class Order {
 
-	@Id
+    private static final String NOT_BLANK_MESSAGE = "Toto políčko je povinné";
+    @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long orderID;
 
@@ -45,28 +46,28 @@ public class Order {
     private boolean emptyItems = true;
 	// User data
 	@Column
-	@NotBlank
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	private String name;
 	@Column
-	@NotBlank
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	private String surname;
 	@Column
-	@NotBlank
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	private String street;
-	@Column
-	@NotBlank
+    @Column
+    @NotBlank(message = NOT_BLANK_MESSAGE)
+    @Pattern(regexp = "(^$|[0-9]{5})")
+    private String psc;
+    @Column
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	private String city;
-	@Column
-	@NotBlank
-	@Pattern(regexp = "(^$|[0-9]{5})")
-	private String psc;
-	@Column
+    @Column
     @Email
-	@NotBlank
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	private String email;
 	@Column
-	@Pattern(regexp = "(^$|[0-9]{10})")
-	@NotBlank
+	@Pattern(regexp = "(^[0-9]{9}$)")
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	private String mobile;
 	@Column
 	private String notes;
