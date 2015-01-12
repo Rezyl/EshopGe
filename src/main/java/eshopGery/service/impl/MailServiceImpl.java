@@ -39,11 +39,14 @@ import freemarker.template.TemplateException;
 @Service
 public class MailServiceImpl implements MailService {
 
+    private static final String SOURCE_EMAIL_ADDRESS = "mr.gerstberger91@gmail.com";
+
     private static final String EMAIL_INVITATION_TEMPLATE_NAME = "emailText.ftl";
 
     private static final String REC_CASH_TEMPLATE_NAME = "rekplatbadobirkou.ftl";
     private static final String REC_CREDIT_CARD_TEMPLATE_NAME = "rekplatbaprevodem.ftl";
     private static final String REC_PERSONAL_TEMPLATE_NAME = "rekosobniodber.ftl";
+    private static final String SOURCE_ADDRESS_NAME = "Bison Socks";
     @Autowired
     private JavaMailSender mailSender;
 
@@ -91,6 +94,7 @@ public class MailServiceImpl implements MailService {
 
         try {
             buildHtmlMessageContent(message, messageDTO);
+            message.setFrom(new InternetAddress(messageDTO.getFrom(), SOURCE_ADDRESS_NAME));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(messageDTO.getTo()));
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -113,6 +117,7 @@ public class MailServiceImpl implements MailService {
         MimeMessage message = mailSender.createMimeMessage();
         try {
             buildHtmlMessageContent(message, messageDTO);
+            message.setFrom(new InternetAddress(messageDTO.getFrom(), SOURCE_ADDRESS_NAME));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(messageDTO.getTo()));
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -124,6 +129,7 @@ public class MailServiceImpl implements MailService {
     private EmailMessage createEmailMessageDTO(String emailAddressTo, String subject, String[] attachmentNames, ServletContext servletContext) {
         EmailMessage message = new EmailMessage();
 
+        message.setFrom(SOURCE_EMAIL_ADDRESS);
         message.setTo(emailAddressTo);
         message.setSubject(subject);
 
