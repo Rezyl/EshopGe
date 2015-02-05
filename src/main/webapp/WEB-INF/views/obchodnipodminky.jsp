@@ -19,16 +19,13 @@
     <font face="arial">
         Všechno zboží máme skladem, takže nečekáme a můžeme rovnou posílat.</p>
 
-<p><strong style="font-weight: 400">Objednávky přijaty v pracovní dny do 12:00
-    odesíláme ještě ten samý den, objednávky přijaty po 12:00 odesíláme následující
-    pracovní den</strong>.<br>
-    <strong style="font-weight: 400">Samotná přeprava pak trvá v naprosté většině
-        případů 1 pracovní den. Pokud by vás na uvedené adrese pošťák nezastihl,
-        zastavte se na příslušné pobočce České Pošty, kde bude balík na vaše jméno
-        uložen po dobu 7 dnů;.</strong>&nbsp;</p>
+<p><strong style="font-weight: 400">Objednávky, které jsou placeny dobírkou odesíláme ještě ten samý den, pokud jsou přijaty do 12:00, objednávky přijaty po 12:00 odesíláme následující pracovní den.
+    Samotná přeprava pak v případě platby dobírkou trvá v naprosté většině případů 1 pracovní den. Pokud by vás na uvedené adrese pošťák nezastihl, zastavte se na příslušné pobočce České Pošty, kde bude balík na vaše jméno uložen po dobu 7 dnů. V případě platby předem převodem na učet je zboží odesíláno po přijetí peněz, informace o platbě (č. bankovního učtu a variabilní symbol) jsou zasílány emailem po vytvoření objednávky.
+    U objednávek s osobním odběrem v Hradci Králové je po vytvoření objednáky zasílán email s konkrétní iformací o možnosti osobního odběru.
+</strong>&nbsp;</p>
 
 <p>Doručování zboží zajišťujeme prostřednictvým České Pošty a.s.<br> <b>
-    <span style="font-size: 13pt">Cena poštovného a balného je 49Kč v případě platby předem převodem na účet, v případě platby dobírkou je cena poštovného a balného stanovena na 89Kč. <br></span></b><span
+    <span style="font-size: 13pt">Cena poštovného a balného je 49Kč v případě platby předem převodem na účet, v případě platby dobírkou je cena poštovného a balného stanovena na 89Kč. Osobní odběr v Hradci Králové je zdarma. <br></span></b><span
         style="font-size: 13pt"><b>
 </b></span> Neručíme za
     zboží během přepravy a nemůžeme zajistit náhradu škody způsobenou špatným
