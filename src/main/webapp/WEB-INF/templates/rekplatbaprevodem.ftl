@@ -91,14 +91,14 @@
 			<tr style="text-align:right">
 				<td>&nbsp;</td>
 				<td colspan="3" style="background-color:#dde2e6;padding:0.6em 0.4em">
-				Poštovný a balný</td>
+				Poštovné a balné</td>
 				<td style="background-color:#dde2e6;padding:0.6em 0.4em">49 Kč</td>
 			</tr>
 			<tr style="text-align:right;font-weight:bold">
 				<td>&nbsp;</td>
 				<td colspan="3" style="background-color:#9fad9c;padding:0.6em 0.4em">
-				Cena celkem </td>
-				<td style="background-color:#9fad9c;padding:0.6em 0.4em">${order.totalPrice} Kč</td>
+                    Cena celkem </td>
+                <td style="background-color:#9fad9c;padding:0.6em 0.4em">${order.totalPrice} Kč vč DPH</td>
 			</tr>
 		</table>
 		</td>
@@ -123,8 +123,7 @@
 		<td>
 		<table style="width:100%;font-family:Verdana,sans-serif;font-size:11px;color:#374953">
 			<tr style="background-color:#b9babe;text-transform:uppercase">
-				<th style="text-align:left;padding:0.3em 1em">Adresa pro 
-				doručení</th>
+				<th style="text-align:left;padding:0.3em 1em">Adresa kupujícího</th>
 			</tr>
 			<tr>
 				<td style="padding:0.5em 0 0.5em 0.5em;background-color:#ebecee">

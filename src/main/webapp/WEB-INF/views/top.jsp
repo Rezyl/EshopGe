@@ -14,11 +14,13 @@
 </p>
 
 <p align="center">&nbsp;&nbsp;&nbsp;
-    <img border="0" src="/resources/img/2.png" width="15.7%" height="233" align="texttop"><img border="0"
+    <a target="_top" href="/showByCategory?category=STRIPES_SOCKS"><img border="0" src="/resources/img/2.png" width="15.7%" height="233" align="texttop"></a>
+    <a target="_top" href="/showByCategory?category=STYLE_SOCKS"><img border="0"
                                                                                              src="/resources/img/1.png"
                                                                                              width="214" height="233"
-                                                                                             align="texttop"><img
-            border="0" src="/resources/img/3.png" width="15.7%" height="233" align="texttop"></p>
+                                                                                             align="texttop"></a>
+    <a target="_top" href="/showByCategory?category=DOT_SOCKS"><img
+            border="0" src="/resources/img/3.png" width="15.7%" height="233" align="texttop"></a></p>
 <jsp:include page="socialnisite.jsp"/>
 </body>
 </html>

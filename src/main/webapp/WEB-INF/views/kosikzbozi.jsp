@@ -22,7 +22,7 @@
             </thead>
             <tbody>
             <c:forEach var="item" items="${SEARCH_ITEM_RESULTS_KEY}">
-                <td width="200"><img src="${item.key.imageFilePath}" alt="${item.key.name}" width="214" height="233"/>
+                <td width="200"><img src="${item.key.imageFilePath}" alt="${item.key.name}" width="211" height="423"/>
                 </td>
                 <td width="200"><c:out value="${item.key.size}"></c:out></td>
                 <td width="200"><c:out value="${item.value}"></c:out></td>
@@ -51,7 +51,7 @@
         <br>
         <br>
 
-        <img border="0" src="/resources/img/ponozky.png" width="7.6%" height="14.71%">
+    <a target="_top" href="/showByCategory?category=STYLE_SOCKS"><img border="0" src="/resources/img/ponozky.png" width="7.6%" height="14.71%"></a>
     </c:if>
 
 

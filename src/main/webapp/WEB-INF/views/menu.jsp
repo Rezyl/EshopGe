@@ -9,7 +9,7 @@
 <p align="center"><img border="0" src="/resources/img/oddelovac.bmp" width="73%" height="4"></p>
 
 <p align="center">
-    <a target="_top" href="/showByCategory?category=ALTERNATIVE"><img border="0" src="/resources/img/obchod.png"
+    <a target="_top" href="/showByCategory?category=STYLE_SOCKS"><img border="0" src="/resources/img/obchod.png"
                                                                       width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     <a target="_top" href="/top"><img border="0" src="/resources/img/top.png" width="11%" height="4.036%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
