@@ -82,14 +82,14 @@
 			<tr style="text-align:right">
 				<td>&nbsp;</td>
 				<td colspan="3" style="background-color:#dde2e6;padding:0.6em 0.4em">
-				Poštovný a balný</td>
-				<td style="background-color:#dde2e6;padding:0.6em 0.4em">49 Kč</td>
+				Poštovné a balné</td>
+				<td style="background-color:#dde2e6;padding:0.6em 0.4em">0 Kč</td>
 			</tr>
 			<tr style="text-align:right;font-weight:bold">
 				<td>&nbsp;</td>
 				<td colspan="3" style="background-color:#9fad9c;padding:0.6em 0.4em">
 				Cena celkem </td>
-				<td style="background-color:#9fad9c;padding:0.6em 0.4em">${order.totalPrice} Kč</td>
+				<td style="background-color:#9fad9c;padding:0.6em 0.4em">${order.totalPrice} Kč vč DPH</td>
 			</tr>
 		</table>
 		</td>
@@ -105,7 +105,7 @@
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td align="left">Způsob dopravy: Česká pošta, doporučeně</td>
+		<td align="left">Způsob dopravy: Osobní převzetí v Hradci Králové</td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
