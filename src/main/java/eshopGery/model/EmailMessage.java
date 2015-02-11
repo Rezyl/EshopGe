@@ -15,15 +15,16 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 public class EmailMessage {
 
-	@Email
-	@NotBlank
+
+	@NotBlank(message = Order.NOT_BLANK_MESSAGE)
     private String to;
-	@NotBlank
+    @Email
+	@NotBlank(message = Order.NOT_BLANK_MESSAGE)
 	private String from;
 	private String hiddenCopy;
     private String subject;
 
-    @NotBlank
+    @NotBlank(message = Order.NOT_BLANK_MESSAGE)
 	private String message;
 
     private List<File> files;
