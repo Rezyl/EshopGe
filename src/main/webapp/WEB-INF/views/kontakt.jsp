@@ -61,16 +61,16 @@
             <td class="paramvalue" width="532" align="justify">
                 <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default active" >
-                        <form:radiobutton path="subject" value="Hodnocení"/>Hodnoceni
+                            <input type="radio" name="subject" value="Hodnocení"/>Hodnocení
                         </label >
                         <label class="btn btn-default" >
-                            <form:radiobutton path="subject" value="Moje objednávka"/>Moje objednávka
+                            <input type="radio" name="subject" value="Moje objednávka"/>Moje objednávka
                         </label >
                         <label class="btn btn-default" >
-                            <form:radiobutton path="subject" value="Barva/model/velikost"/>Barva/model/velikost
+                            <input type="radio" name="subject" value="Barva/model/velikost"/>Barva/model/velikost
                         </label >
                         <label class="btn btn-default" >
-                            <form:radiobutton path="subject" value="Ostatní"/>Ostatní
+                            <input type="radio" name="subject" value="Ostatní"/>Ostatní
                         </label >
                 </div>
             </td>
@@ -85,6 +85,7 @@
 
                 <p align="left"><textarea id="message" rows="10" name="message" cols="47"></textarea></td>
             <td class="paramvalue" width="532" align="justify" height="246">
+                <form:errors path="message" cssClass="errorMessage"/>
 
                 &nbsp;</td>
         </tr>

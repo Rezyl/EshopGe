@@ -46,10 +46,9 @@ public class MailController {
 		if (result.hasErrors()) {
 			return "kontakt";
 		}
-
-		message.setSubject(message.getTo()+"-"+message.getSubject());
-        message.setTo("l.rezner@gmail.com");
-        //TODO ceske znaky
+        //name + subject
+		message.setSubject(message.getTo() + "- " + message.getSubject());
+        message.setTo("m.gerstberger91@gmail.com");
         service.sendEmail(message);
         return "redirect:kontakt";
     }

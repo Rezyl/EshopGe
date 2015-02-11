@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "OrderItem")
 public class Order {
 
-    private static final String NOT_BLANK_MESSAGE = "Toto políčko je povinné";
+    public static final String NOT_BLANK_MESSAGE = "Toto políčko je povinné";
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long orderID;
