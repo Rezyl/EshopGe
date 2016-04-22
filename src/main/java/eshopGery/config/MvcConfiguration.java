@@ -1,10 +1,5 @@
 package eshopGery.config;
 
-import java.util.Properties;
-
-import javax.persistence.EntityManagerFactory;
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +22,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+
+import javax.persistence.EntityManagerFactory;
+import javax.servlet.ServletContext;
+import java.util.Properties;
 
 @EnableWebMvc
 @EnableJpaRepositories(value = "eshopGery.repository", entityManagerFactoryRef = "entityManagerFactory", transactionManagerRef = "transactionManager")
@@ -141,7 +140,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setUsername("m.gerstberger91@gmail.com");
 
-		mailSender.setPassword("popelnice07");
+		mailSender.setPassword("hesloproMisku70");
 
 		Properties properties = new Properties();
 		properties.setProperty("mail.smtps.auth", String.valueOf(true));
